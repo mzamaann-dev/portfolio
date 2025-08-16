@@ -1,0 +1,804 @@
+{
+  "personal": {
+    "name": "Muhammad Zaman",
+    "title": "Full Stack Engineer",
+    "email": "your.email@example.com",
+    "location": "Karachi, Pakistan",
+    "avatar": "/images/avatar.jpg",
+    "bio": "Passionate full-stack engineer with expertise in modern web technologies. I love building scalable applications and solving complex problems.",
+    "social": {
+      "github": "https://github.com/mzamaann-dev",
+      "linkedin": "https://linkedin.com/in/mzamaann",
+      "portfolio": "https://yourportfolio.com"
+    }
+  },
+  "skills": {
+    "frontend": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Redux/Redux Toolkit",
+      "Zustand",
+      "Axios",
+      "React Router",
+      "React Query/Tanstack Query",
+      "React Testing Library",
+      "React Hookform/Formik",
+      "Ant-Design",
+      "Material UI",
+      "Shadcn UI",
+      "Daisy UI"
+    ],
+    "backend": [
+      "C#",
+      ".NET 6/8",
+      "ASP.NET Core",
+      "Blazor WebAssembly",
+      "Node.js",
+      "Nest.js",
+      "SQL Server",
+      "OracleDB",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis"
+    ],
+    "devops": ["Docker", "AWS", "Azure", "GitHub Actions"],
+    "tools": [
+      "Git",
+      "VS Code",
+      "Visual Studio",
+      "Jetbrain's Rider",
+      "Postman",
+      "Jest",
+      "Playwright",
+      "Webpack",
+      "Vite"
+    ]
+  },
+  "experience": [
+    {
+      "id": 1,
+      "company": "Astera Software",
+      "position": "Full Stack Developer",
+      "duration": "2023 - 2025",
+      "location": "Karachi, Pakistan",
+      "description": "Led development of scalable web applications using React, Node.js, and cloud technologies. Mentored junior developers and implemented best practices. ",
+      "technologies": [
+        "React",
+        "Node.js",
+        "TypeScript",
+        "Azure",
+        "Docker",
+        "C#",
+        ".NET 6/8",
+        "ASP.NET Core",
+        "SQL Server",
+        "Redis"
+      ],
+      "achievements": [
+        "Contributed to the migration of a legacy system (WinForm) to a modern (WPF), assisting in enhancing the UI/UX layer through imporved layouts and interactions. This effort contributed to a increase in customer adoption, as user embraced the more modern and interactive interface.",
+        "Lead the successful delivery of  HRMS covering all the planned modules and integrations, Adopted agile, participating in daily standups, sprint planning, and retrospectives for iterative and transparent communication.",
+        "Participated in the hackathon organized by the company, where we developed a web application using React, Node.js, and cloud technologies."
+      ]
+    },
+    {
+      "id": 2,
+      "company": "Zepcom/Allshore Virtual Talent",
+      "position": "Full Stack Developer",
+      "duration": "2022 - 2023",
+      "location": "Remote",
+      "description": "Built and maintained multiple web applications from concept to deployment. Collaborated with cross-functional teams to deliver high-quality products.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "TypeScript",
+        "Azure",
+        "Docker",
+        "C#",
+        ".NET 6/8",
+        "ASP.NET Core",
+        "SQL Server",
+        "Redis"
+      ],
+      "achievements": [
+        "Developed MVP that secured $2M in funding",
+        "Improved user engagement by 35% through UI/UX enhancements",
+        "Reduced bug reports by 50% through testing implementation"
+      ]
+    },
+    {
+      "id": 3,
+      "company": "Techlogix",
+      "position": "Senior Software Engineer",
+      "duration": "2020 - 2022",
+      "location": "Karachi, Pakistan",
+      "description": "Built and maintained multiple web applications from concept to deployment. Collaborated with cross-functional teams to deliver high-quality products.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "TypeScript",
+        "Azure",
+        "Docker",
+        "C#",
+        ".NET 6/8",
+        "ASP.NET Core",
+        "SQL Server",
+        "Redis"
+      ],
+      "achievements": [
+        "Entrusted with UBL’s nationwide cheque clearing system after senior team resignation, I quickly mastered operations, resolved a billion-rupee transaction failure by reverting and reprocessing stuck entries with full audit compliance, ensured zero disruption across the country, and received commendation from the Director, VP, and AVP.",
+        "Proposed and delivered a POC for micro-frontends using Webpack Module Federation, solving challenges of scalability, maintainability, and code isolation, and authored a step-by-step integration guide enabling teams to onboard their apps into the container and sync information seamlessly. The solution was adopted across the project and continues to be used as the standard architecture. and earned me an award 'Employee of the Month' for technical innovation and organizational impact.",
+        "Collaborated cross-functionally, and Led the team of 5 frontend developers."
+      ]
+    },
+    {
+      "id": 4,
+      "company": "LeapTech Solutions",
+      "position": "Software Engineer",
+      "duration": "2019 - 2020",
+      "location": "Karachi, Pakistan",
+      "description": "Built and maintained multiple web applications from concept to deployment. Collaborated with cross-functional teams to deliver high-quality products.",
+      "technologies": [
+        "React",
+        "Node.js",
+        "TypeScript",
+        "Azure",
+        "Docker",
+        "C#",
+        ".NET 6/8",
+        "ASP.NET Core",
+        "SQL Server",
+        "Redis"
+      ],
+      "achievements": [
+        "Developed MVP that secured $2M in funding",
+        "Improved user engagement by 35% through UI/UX enhancements",
+        "Reduced bug reports by 50% through testing implementation"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "University of Karachi",
+      "duration": "2016 - 2019",
+      "location": "Karachi, Pakistan",
+      "gpa": "3.35/4.0",
+      "relevant_courses": [
+        "Data Structures",
+        "Algorithms",
+        "Web Development",
+        "Database Systems"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "id": 1,
+      "name": "Intermediate SQL",
+      "issuer": "DataCamp",
+      "date": "June 2025",
+      "credential_id": "DC-SQL-2025",
+      "url": "https://www.datacamp.com/certificate/DC-SQL-2025",
+      "description": "Completed the Intermediate SQL course, demonstrating proficiency in SQL and PostgreSQL.",
+      "type": "certification",
+      "tags": ["sql", "postgresql"],
+      "icon": "database"
+    },
+    {
+      "id": 2,
+      "name": "Modern React with Redux",
+      "issuer": "Udemy",
+      "date": "March 2024",
+      "credential_id": "UD-REACT-2024",
+      "url": "https://www.udemy.com/certificate/UD-REACT-2024",
+      "description": "Completed the Modern React with Redux course, covering advanced React patterns and Redux for state management.",
+      "type": "certification",
+      "tags": ["react", "redux", "javascript"],
+      "icon": "code"
+    },
+    {
+      "id": 3,
+      "name": "C# Basic",
+      "issuer": "HackerRank",
+      "date": "January 2024",
+      "credential_id": "HR-CSHARP-2024",
+      "url": "https://www.hackerrank.com/certificates/HR-CSHARP-2024",
+      "description": "Completed the C# Basic certification, demonstrating proficiency in C# and REST APIs.",
+      "type": "certification",
+      "tags": ["c#", "dotnet", "api"],
+      "icon": "code"
+    }
+  ],
+  "awards": [
+    {
+      "id": 1,
+      "name": "Employee of the Month",
+      "issuer": "Techlogix",
+      "date": "April 2022",
+      "description": "Recognized for exceptional performance and leadership in software development",
+      "type": "award",
+      "tags": ["react", "typescript", "dotnet"],
+      "icon": "trophy"
+    },
+    {
+      "id": 2,
+      "name": "Team Leadership Excellence",
+      "issuer": "Techlogix",
+      "date": "December 2023",
+      "description": "Recognized for outstanding leadership and mentoring of junior developers",
+      "type": "achievement",
+      "tags": ["leadership", "mentoring", "teamwork"],
+      "icon": "users"
+    },
+    {
+      "id": 3,
+      "name": "Employee Excellence Award",
+      "issuer": "Zepcom/Allshore Virtual Talent",
+      "date": "September 2023",
+      "description": "Awarded for exceptional contributions to project success and team collaboration",
+      "type": "award",
+      "tags": ["excellence", "collaboration", "project-management"],
+      "icon": "award"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Atlas Core Software Development",
+      "description": "Worked on Atlas Core Software Development as a Senior Full Stack Developer, implementing a scalable micro-frontend architecture using Webpack Module Federation. Collaborated cross-functionally, led a team of 5 frontend developers, authored integration guidelines for seamless app onboarding, and delivered a solution that was adopted as the project standard and is still in use today, earning Employee of the Month for impactful contributions.",
+      "technologies": [
+        "React",
+        "Webpack Module Federation",
+        "Micro-Frontends",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "github_url": "",
+      "live_url": "https://atlashxm.com",
+      "image": "/images/projects/atlas-core.jpg",
+      "duration": "6 months",
+      "team_size": "5 developers",
+      "role": "Senior Full Stack Developer",
+      "features": [
+        "Implemented scalable micro-frontend architecture",
+        "Authored integration guidelines for cross-team adoption",
+        "Led a team of 5 frontend developers",
+        "Solution adopted as project standard and still in use",
+        "Collaborated cross-functionally across teams"
+      ],
+      "architecture": "Implemented a micro-frontend architecture using Webpack Module Federation, allowing multiple teams to develop and deploy independent frontend applications that can be composed together at runtime. The architecture supports dynamic loading, shared dependencies, and runtime integration.",
+      "performance": "Optimized bundle sizes by 40% through code splitting and lazy loading. Implemented caching strategies that improved page load times by 60%. Used performance monitoring tools to identify and resolve bottlenecks.",
+      "challenges": [
+        "Coordinating multiple development teams with different tech stacks",
+        "Managing shared dependencies across micro-frontends",
+        "Ensuring consistent user experience across integrated applications",
+        "Implementing proper error boundaries and fallback mechanisms"
+      ],
+      "solutions": [
+        "Created comprehensive integration guidelines and documentation",
+        "Implemented a shared component library with design system",
+        "Developed automated testing strategies for integration points",
+        "Established clear communication protocols between teams"
+      ],
+      "lessons_learned": [
+        "Micro-frontend architecture requires strong governance and documentation",
+        "Shared state management is crucial for seamless user experience",
+        "Performance optimization becomes more complex with distributed applications",
+        "Team collaboration and communication are as important as technical implementation"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Sweet Medina Traders",
+      "description": "Developed a web-based fintech module for Sweet Medina Traders while associated with Leaptech Solutions, focusing on money recovery and accountancy. The system tracks amounts recovered, recovery dates, responsible personnel, and account balances, fulfilling the client’s financial tracking requirements and providing detailed reporting.",
+      "technologies": [
+        "ASP.NET MVC",
+        "Web API",
+        "Visual Studio 2019",
+        "Admin LTE 2",
+        "JSON",
+        "Entity Framework",
+        "SQL Server 2014",
+        "jQuery",
+        "jQuery DataTables"
+      ],
+      "github_url": "",
+      "live_url": "",
+      "image": "/images/projects/sweet-medina-traders.jpg",
+      "duration": "Dec 2019 - Jun 2020",
+      "team_size": "2-3 developers",
+      "role": "Full Stack Developer",
+      "features": [
+        "Tracks recovered amounts, dates, and responsible personnel",
+        "Maintains accurate account balances",
+        "Web-based application with user-friendly interface",
+        "Detailed reporting using jQuery DataTables",
+        "Transactional integrity ensured using Entity Framework transactions"
+      ],
+      "architecture": "Standard 3-tier web application architecture with ASP.NET MVC, Entity Framework for data access, and Web API for server-side endpoints. Ensures proper transactional handling for financial operations.",
+      "performance": "Optimized database queries and used Entity Framework transactions to maintain data consistency. Reports and data tables load efficiently for end-users.",
+      "challenges": [
+        "Ensuring accurate transaction recording and account reconciliation",
+        "Handling concurrent financial updates",
+        "Implementing user-friendly reporting for client oversight"
+      ],
+      "solutions": [
+        "Used Entity Framework transactions for data integrity",
+        "Integrated jQuery DataTables for interactive reporting",
+        "Designed intuitive UI for easy tracking and monitoring"
+      ],
+      "lessons_learned": [
+        "Financial applications require strict transactional handling",
+        "Clear reporting and UI design improves usability for clients",
+        "Backend and frontend integration is critical for real-time data accuracy"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Kamil Builders (Construction Project)",
+      "description": "Developed a web-based application for Kamil Builders while associated with Leaptech Solutions, aimed at managing property sales, customer payments, and installment tracking. The system enables builders to manage towers, floors, and individual units, track cash and installment payments, and maintain accurate records of customer transactions.",
+      "technologies": [
+        "ASP.NET MVC",
+        "ASP.NET Core",
+        "C#",
+        "JavaScript",
+        "Entity Framework Core",
+        "SQL Server",
+        "REST APIs"
+      ],
+      "github_url": "",
+      "live_url": "",
+      "image": "/images/projects/kamil-builders.jpg",
+      "duration": "Feb 2020 - Jun 2020",
+      "team_size": "2-3 developers",
+      "role": "Full Stack Developer",
+      "features": [
+        "Manages property sales, towers, floors, and units",
+        "Tracks cash and installment payments for customers",
+        "Web-based application with user-friendly interface",
+        "Generates financial and property reports",
+        "Built with ASP.NET MVC/Core and Entity Framework Core"
+      ],
+      "architecture": "3-tier web application architecture with ASP.NET MVC/Core, Entity Framework Core for data access, and REST APIs for server-side operations. Ensures accurate tracking of customer transactions and property details.",
+      "performance": "Optimized database queries for smooth handling of multiple properties, floors, and units with real-time reporting.",
+      "challenges": [
+        "Accurately tracking installments and payments across multiple properties, floors, and units",
+        "Ensuring data integrity for customer and property financial records",
+        "Providing a clear interface for property, floor, unit, and payment management"
+      ],
+      "solutions": [
+        "Used Entity Framework Core with transactions to maintain data integrity",
+        "Implemented REST APIs for efficient backend operations",
+        "Designed intuitive UI to manage towers, floors, units, and customer payments easily"
+      ],
+      "lessons_learned": [
+        "Property and financial management applications require precise transactional handling",
+        "Clear UI/UX is critical for non-technical users managing complex property structures",
+        "Backend and frontend integration is crucial for accurate tracking and reporting"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "SignNow",
+      "description": "Developed a web-based application for SignNow while associated with Leaptech Solutions, designed for a marketing agency managing billboard advertising. The system handles ad placement requests, survey steps, approvals, and signing processes, allowing clients to efficiently schedule and authorize billboard advertisements.",
+      "technologies": [
+        "ASP.NET MVC",
+        "ASP.NET Core",
+        "C#",
+        "JavaScript",
+        "Entity Framework Core",
+        "SQL Server",
+        "REST APIs"
+      ],
+      "github_url": "",
+      "live_url": "",
+      "image": "/images/projects/signnow.jpg",
+      "duration": "Feb 2020 - Jun 2020",
+      "team_size": "2-3 developers",
+      "role": "Full Stack Developer",
+      "features": [
+        "Manages billboard ad placement requests",
+        "Handles multiple survey and approval steps",
+        "Allows clients to digitally authorize ads",
+        "Web-based interface for marketing agency workflow",
+        "Built with ASP.NET MVC/Core and Entity Framework Core"
+      ],
+      "architecture": "3-tier web application architecture with ASP.NET MVC/Core, Entity Framework Core for data access, and REST APIs for server-side operations. Supports multi-step survey and approval workflow for ad placement.",
+      "performance": "Optimized database and workflow queries to handle multiple survey steps and client approvals efficiently.",
+      "challenges": [
+        "Managing multi-step survey and approval workflow",
+        "Ensuring data integrity during ad placement and approvals",
+        "Providing an intuitive interface for clients and agency staff"
+      ],
+      "solutions": [
+        "Implemented REST APIs to manage survey and approval steps",
+        "Designed transactional backend to ensure accurate ad placement records",
+        "Developed a clear and intuitive UI for clients to authorize ads"
+      ],
+      "lessons_learned": [
+        "Complex multi-step workflows require careful backend design",
+        "Clear UI is critical for client-facing approval processes",
+        "Transactional integrity is important for managing advertising commitments"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "UBL Service Augmentation - Inward Clearing System",
+      "description": "Worked on UBL's Inward Clearing System while associated with Techlogix, taking over after senior resources resigned. Managed a critical nationwide system processing daily transactions worth billions of rupees. Analyzed and resolved stuck transactions due to operational errors, reverted them to audit-compliant status, and generated new batches to ensure uninterrupted financial operations.",
+      "technologies": [
+        "ASP.NET MVC",
+        "Web API",
+        "C#",
+        "JavaScript",
+        "Oracle SQL Developer",
+        "REST APIs"
+      ],
+      "github_url": "",
+      "live_url": "",
+      "image": "/images/projects/ubl-inward-clearing.jpg",
+      "duration": "Jul 2021 - Dec 2021",
+      "team_size": "2-3 developers",
+      "role": "Full Stack Developer",
+      "features": [
+        "Monitors and manages daily nationwide cheque transactions",
+        "Automatically detects and resolves stuck or failed transactions",
+        "Maintains audit-compliant status for all transactions",
+        "Generates new transaction batches to ensure continuity",
+        "Web-based interface for operators and administrators"
+      ],
+      "architecture": "3-tier web application architecture with ASP.NET MVC/Web API, Oracle database for transaction management, and REST APIs for backend operations. Ensures high availability and transactional integrity across nationwide operations.",
+      "performance": "Optimized transaction handling to quickly revert and process stuck transactions, ensuring zero downtime for critical financial operations.",
+      "challenges": [
+        "Managing a critical nationwide financial system with zero tolerance for errors",
+        "Analyzing and correcting billions of rupees worth of stuck transactions quickly",
+        "Understanding system operations in a short timeframe due to senior resource resignation"
+      ],
+      "solutions": [
+        "Analyzed stuck transactions and reverted them to correct audit-compliant statuses",
+        "Generated new transaction batches to restore processing",
+        "Engaged directly with end-users to quickly gain domain knowledge and understanding of the system"
+      ],
+      "lessons_learned": [
+        "Critical financial systems require rigorous attention to detail and quick problem-solving",
+        "Strong collaboration with users is essential to understand complex operational workflows",
+        "Effective crisis management and communication are key in high-stakes environments"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Life Insurance Management System",
+      "description": "Developed a Blazor WebAssembly-based life insurance management system using .NET 6 and Clean Architecture. The application enables policy management, claims processing, and customer tracking with secure, scalable, and maintainable architecture. Integrated Azure Functions for serverless operations and Cosmos DB for distributed data storage, providing a responsive and efficient solution.",
+      "technologies": [
+        "Blazor WebAssembly",
+        ".NET 6",
+        "Clean Architecture",
+        "Cosmos DB",
+        "Azure Functions",
+        "Telerik for Blazor",
+        "C#",
+        "AutoMapper",
+        "REST APIs"
+      ],
+      "github_url": "",
+      "live_url": "",
+      "image": "/images/projects/life-insurance.jpg",
+      "duration": "2022 - 2023",
+      "team_size": "4-5 developers",
+      "role": "Full Stack Developer",
+      "features": [
+        "Policy management and tracking for life insurance customers",
+        "Claims processing workflow with audit tracking",
+        "Serverless backend operations using Azure Functions",
+        "Distributed data storage and retrieval using Cosmos DB",
+        "Responsive UI with Telerik components for Blazor"
+      ],
+      "architecture": "Clean Architecture with Blazor WebAssembly frontend, REST APIs for backend services, Azure Functions for serverless operations, and Cosmos DB for distributed data. Ensures maintainability, scalability, and separation of concerns.",
+      "performance": "Optimized serverless operations and database queries to provide fast response times and efficient claim processing. Used AutoMapper for smooth data transformations between layers.",
+      "challenges": [
+        "Implementing a distributed database solution for real-time insurance data",
+        "Maintaining clean separation of concerns in a complex domain model",
+        "Ensuring responsive and interactive UI for large datasets"
+      ],
+      "solutions": [
+        "Adopted Clean Architecture principles for maintainable code structure",
+        "Used Azure Functions to handle scalable serverless operations",
+        "Implemented Cosmos DB for distributed and reliable data storage",
+        "Leveraged Telerik for Blazor to build responsive and interactive UI"
+      ],
+      "lessons_learned": [
+        "Serverless architecture improves scalability but requires careful planning",
+        "Clean Architecture ensures maintainable and testable code for complex domains",
+        "Blazor WebAssembly is effective for responsive, full-featured web applications"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Traffk Agent Portal",
+      "description": "Developed the Traffk Agent Portal for ZEPCOM, collaborating with Design, DevOps, QA teams, and US-based clients. Built a scalable, responsive portal using Blazor WebAssembly, Clean Architecture, and Azure services, with custom components, reporting, and seamless client interactions.",
+      "technologies": [
+        ".NET 6",
+        "Blazor WebAssembly",
+        "Clean Architecture",
+        "Azure Cosmos DB",
+        "Azure Functions",
+        "Telerik for Blazor",
+        "C#",
+        "AutoMapper",
+        "REST APIs"
+      ],
+      "github_url": "",
+      "live_url": "",
+      "image": "/images/projects/traffk-agent-portal.jpg",
+      "duration": "Dec 2022 - Mar 2023",
+      "team_size": "4-5 developers",
+      "role": "Full Stack Developer",
+      "features": [
+        "Custom phone number input control using Blazor WebAssembly",
+        "Custom Listing/Table components for data display",
+        "DOM, session, and local storage manipulation via IJSRuntime",
+        "Reporting using Telerik Reporting for Blazor",
+        "Seamless collaboration with clients and stakeholders"
+      ],
+      "architecture": "Clean Architecture with Blazor WebAssembly frontend, Azure Functions backend for serverless operations, and Cosmos DB for distributed data storage. Ensures maintainability, scalability, and separation of concerns.",
+      "performance": "Optimized component rendering and reporting for responsive performance. Implemented efficient session and local storage handling for improved UX.",
+      "challenges": [
+        "Integrating complex custom components with Blazor WebAssembly",
+        "Maintaining consistent UX while handling large datasets",
+        "Coordinating development across multiple teams and stakeholders"
+      ],
+      "solutions": [
+        "Built reusable and modular components using Blazor WebAssembly",
+        "Used Azure Functions and Cosmos DB for efficient backend operations",
+        "Collaborated via MS Teams and task management in JIRA for smooth CI/CD with Azure"
+      ],
+      "lessons_learned": [
+        "Custom component design improves usability for specific domain needs",
+        "Clear communication with distributed teams is essential for project success",
+        "Blazor WebAssembly combined with Azure services enables scalable and responsive applications"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Custom Authentication & Reporting Module",
+      "description": "Developed a custom authentication and reporting module while collaborating with Design, DevOps, QA teams, and US clients. Implemented user, role, and permission management from scratch with advanced multi-factor authentication, and built robust reporting with Telerik and SQL Server.",
+      "technologies": [
+        ".NET 6",
+        ".NET MVC",
+        ".NET WebAPI",
+        "SQL Server",
+        "Entity Framework Core",
+        "N-Tier Architecture",
+        "Repository Pattern",
+        "Unit of Work",
+        "Telerik Reporting"
+      ],
+      "github_url": "",
+      "live_url": "",
+      "image": "/images/projects/custom-auth-reporting.jpg",
+      "duration": "2022",
+      "team_size": "3-4 developers",
+      "role": "Full Stack Developer",
+      "features": [
+        "Implemented custom authentication and authorization (Users/Roles/Permissions)",
+        "Built permission-based authorization and multi-factor authentication (Microsoft Authenticator, Duo, custom 2FA)",
+        "Designed and developed reporting using Telerik Reporting with HTML5 Viewer",
+        "Implemented Repository and Unit of Work patterns for data access",
+        "Full control over authentication without relying on ASP.NET Identity"
+      ],
+      "architecture": "N-Tier architecture with WebAPI backend, SQL Server database, and Entity Framework Core for data access. Implements clean separation of concerns using Repository and Unit of Work patterns.",
+      "performance": "Optimized database queries and reporting for fast performance. Ensured secure authentication and authorization without compromising responsiveness.",
+      "challenges": [
+        "Implementing authentication and authorization completely from scratch",
+        "Integrating multi-factor authentication methods seamlessly",
+        "Ensuring secure, scalable, and maintainable reporting functionality"
+      ],
+      "solutions": [
+        "Developed custom authentication and permission-based authorization modules",
+        "Integrated Microsoft Authenticator, Duo, and custom 2FA methods",
+        "Used Repository and Unit of Work patterns for maintainable data access",
+        "Designed efficient and responsive reporting with Telerik and SQL Server"
+      ],
+      "lessons_learned": [
+        "Custom authentication provides full control but requires careful security planning",
+        "Multi-factor authentication enhances security but needs smooth user experience",
+        "N-Tier architecture with repository patterns ensures maintainable and scalable applications"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Promptopia",
+      "description": "Developed Promptopia, a web application that allows users to save, organize, and discover prompts. Users can filter prompts by tags, view other users’ prompts, and manage their own prompts efficiently. The project is built with Next.js, React, and TypeScript, providing a fast, scalable, and type-safe platform for prompt management.",
+      "technologies": [
+        "Next.js",
+        "React.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "MongoDB",
+        "Mongoose ODM",
+        "NextAuth"
+      ],
+      "github_url": "",
+      "live_url": "",
+      "image": "/images/projects/promptopia.jpg",
+      "duration": "2023",
+      "team_size": "2-3 developers",
+      "role": "Full Stack Developer",
+      "features": [
+        "Google Authentication with NextAuth",
+        "Store and retrieve prompts easily",
+        "Filter prompts by tags for quick access",
+        "View and interact with other users’ prompts",
+        "Type-safe and responsive web application using TypeScript and TailwindCSS"
+      ],
+      "architecture": "Next.js and React frontend with TypeScript for type safety. MongoDB as the database with Mongoose ODM for data modeling. NextAuth handles authentication, providing secure access to user accounts.",
+      "performance": "Optimized data retrieval and filtering for fast response times. Used TailwindCSS for lightweight and responsive UI components.",
+      "challenges": [
+        "Efficiently retrieving and filtering prompts by tags",
+        "Ensuring secure authentication and user data handling",
+        "Maintaining type safety across client and server with TypeScript"
+      ],
+      "solutions": [
+        "Implemented NextAuth for authentication",
+        "Used Mongoose ODM for structured and efficient MongoDB queries",
+        "Built reusable React components with TypeScript for maintainability",
+        "Implemented tag-based filtering to quickly find relevant prompts"
+      ],
+      "lessons_learned": [
+        "Type safety improves code reliability across full stack",
+        "Efficient database querying is crucial for scalable applications",
+        "Reusable components enhance maintainability and development speed"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "SwiftHR Leave Management",
+      "description": "Developed SwiftHR Leave Management, a personal project for managing employee leave requests, approvals, and tracking. Built using Blazor WebAssembly with a Clean Architecture approach, leveraging ASP.NET Core, Entity Framework Core, and CQRS for maintainable, scalable, and efficient leave management.",
+      "technologies": ["Blazor WebAssembly", "ASP.NET Core", "C#", "Entity Framework Core", "Clean Architecture", "ASP.NET Identity", "REST APIs", "CQRS", "AutoMapper", "Repository Pattern"],
+      "github_url": "https://github.com/mzamann1/SwiftHR.LeaveManagement",
+      "live_url": "",
+      "image": "/images/projects/swifthr-leave-management.jpg",
+      "duration": "Sep 2023 - Present",
+      "team_size": "Personal Project",
+      "role": "Full Stack Developer",
+      "features": [
+        "Submit, approve, and track employee leave requests",
+        "Role-based access control using ASP.NET Identity",
+        "CQRS pattern for clear separation of read/write operations",
+        "Reusable and maintainable code structure using Clean Architecture",
+        "Efficient data handling with Entity Framework Core and Repository Pattern"
+      ],
+      "architecture": "Clean Architecture with Blazor WebAssembly frontend, ASP.NET Core backend, and Entity Framework Core for data access. Implements CQRS for separation of commands and queries and leverages ASP.NET Identity for secure authentication and role management.",
+      "performance": "Optimized database queries and implemented CQRS to separate read/write operations for better performance. Designed responsive and interactive Blazor components for seamless UX.",
+      "challenges": [
+        "Implementing a scalable and maintainable architecture as a personal project",
+        "Ensuring proper role-based access control and authentication",
+        "Designing a responsive and interactive frontend in Blazor WebAssembly"
+      ],
+      "solutions": [
+        "Used Clean Architecture principles to maintain separation of concerns",
+        "Implemented ASP.NET Identity for secure user management",
+        "Applied CQRS and Repository patterns to optimize data operations and maintainability",
+        "Built reusable Blazor components for interactive UI"
+      ],
+      "lessons_learned": [
+        "Clean Architecture and CQRS patterns improve maintainability and scalability",
+        "Blazor WebAssembly allows building rich interactive web applications",
+        "Proper authentication and role management are crucial for enterprise applications"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Noor Lubricants",
+      "description": "Developed a full-fledged financial and inventory management system for Noor Lubricants while associated with Leaptech Solutions. The system handles sales, purchases, inventory transfers, and financial reporting, including balance sheets and income statements, providing the client with complete control over their operations.",
+      "technologies": ["ASP.NET MVC", "ASP.NET Core", "C#", "JavaScript", "SQL Server", "REST APIs", "jQuery", "Ample Admin Theme"],
+      "github_url": "",
+      "live_url": "",
+      "image": "/images/projects/noor-lubricants.jpg",
+      "duration": "Dec 2019 - Mar 2020",
+      "team_size": "2-3 developers",
+      "role": "Full Stack Developer",
+      "features": [
+        "Sale and Sale Return management",
+        "Purchase and Purchase Return management",
+        "Inventory transfer between locations",
+        "FIFO-based inventory cost management",
+        "Financial reporting including Balance Sheet and Income Statement"
+      ],
+      "architecture": "3-tier web application architecture using ASP.NET MVC and SQL Server for data management. The frontend uses jQuery and Ample Admin theme for responsive UI and reporting.",
+      "performance": "Optimized database queries and inventory calculations for accurate real-time tracking of financial and inventory data.",
+      "challenges": [
+        "Implementing accurate FIFO-based inventory cost management",
+        "Ensuring seamless integration between sales, purchase, and inventory modules",
+        "Providing comprehensive financial reporting while maintaining performance"
+      ],
+      "solutions": [
+        "Designed a modular architecture for separate handling of sales, purchases, and inventory",
+        "Implemented database transactions to ensure data integrity",
+        "Built automated financial reports with real-time data calculations"
+      ],
+      "lessons_learned": [
+        "Accurate inventory management is critical for financial accuracy",
+        "Modular architecture simplifies complex business workflows",
+        "Integrating reporting with transactional systems improves decision-making"
+      ]
+    }
+  ],
+  
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Hafiz Ubaidullah Anwar",
+      "position": "SSE @ Techlogix | Frontend | UI/UX | React JS | API Integration | Middleware | Tech Lead | #ONO",
+      "company": "Techlogix",
+      "avatar": "/images/testimonials/sarah-johnson.jpg",
+      "content": "Muhammad Zaman is amazing at his job and goes beyond the expectations to deliver extra-ordinary work. He knows his way around people, he is good with the clients, does whatever it takes to help colleagues and gets things done. His ability to pick new concepts is very good and he always meet the deadlines.",
+      "rating": 5,
+      "project": "Atlas Core Software Development",
+      "date": "2022"
+    },
+    {
+      "id": 2,
+      "name": "Asad Bin Khalid",
+      "position": "Principal Software Engineer",
+      "company": "Techlogix and Zepcom",
+      "avatar": "/images/testimonials/david-chen.jpg",
+      "content": "Worked with Zaman for around 2 years, always found him energetic on the field and supportive for his coworkers. Never seen a quick learner of latest technologies like him and then implementing them with all passion and hard work, he is a definite recommendation. 👍",
+      "rating": 5,
+      "project": "Atlas Core Software Development",
+      "date": "2022"
+    },
+    {
+      "id": 3,
+      "name": "Syed Hassan Naqvi",
+      "position": "Senior Business Analyst",
+      "company": "UBL - United Bank Limited",
+      "avatar": "/images/testimonials/syed-hassan-naqvi.jpg",
+      "content": "Worked closely with Zaman on the Inward Clearing System at UBL. He managed critical operations with utmost precision, especially during the incident when billions in transactions were stuck. His quick analysis, problem-solving, and execution were outstanding. I would highly recommend him for any organization looking for a reliable and skilled professional.",
+      "rating": 5,
+      "project": "UBL Service Augmentation - Inward Clearing System",
+      "date": "2021"
+    },
+    {
+      "id": 4,
+      "name": "Nabeel Ahmed",
+      "position": "Technical Success Manager",
+      "company": "All Shore Virtual Talent",
+      "avatar": "/images/testimonials/nabeel-ahmed.jpg",
+      "content": "Worked with Zaman on multiple projects during his tenure with All Shore Virtual Talent. He consistently demonstrated exceptional technical skills, quickly grasping complex systems and implementing solutions efficiently. His ability to learn new technologies rapidly, adapt to challenging scenarios, and deliver high-quality results impressed everyone on the team. Zaman's professionalism, problem-solving skills, and dedication make him a standout contributor and a valuable asset to any organization.",
+      "rating": 5,
+      "project": "Condado - VFW Accounting System, Traffk Agent Portal, Hero Life Insurance System",
+      "date": "2023"
+    }
+    
+    
+  ],
+  
+  "languages": [
+    {
+      "name": "English",
+      "proficiency": "Fluent"
+    },
+    {
+      "name": "Urdu",
+      "proficiency": "Native"
+    },
+    {
+      "name": "Punjabi",
+      "proficiency": "Native"
+    },
+    {
+      "name": "Sindhi",
+      "proficiency": "Fluent"
+    },
+
+    {
+      "name": "Arabic",
+      "proficiency": "Learning"
+    }
+  ]
+}

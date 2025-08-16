@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "education": "Education",
+    "projects": "Projects",
+    "awards": "Awards",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "title": "Senior Full Stack Engineer",
+    "subtitle": "I build modern web applications with passion and precision",
+    "cta": "View My Work",
+    "scroll": "Scroll to explore"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Passionate about creating exceptional digital experiences",
+    "bio": "I'm a full-stack engineer with a passion for building scalable, user-friendly applications. With expertise in modern web technologies, I love turning complex problems into simple, beautiful solutions.",
+    "skills": {
+      "title": "Skills & Technologies",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "devops": "DevOps",
+      "tools": "Tools"
+    },
+    "languages": {
+      "title": "Languages",
+      "native": "Native",
+      "fluent": "Fluent",
+      "intermediate": "Intermediate",
+      "basic": "Basic"
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "My professional journey",
+    "present": "Present",
+    "achievements": "Key Achievements",
+    "technologies": "Technologies Used"
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "Academic background",
+    "gpa": "GPA",
+    "relevant_courses": "Relevant Courses"
+  },
+  "certifications": {
+    "title": "Certifications",
+    "subtitle": "Professional certifications",
+    "view": "View Certificate"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "A showcase of my recent work and contributions",
+    "view_live": "View Live",
+    "view_code": "View Code",
+    "view_details": "View Details",
+    "technologies": "Technologies",
+    "features": "Features",
+    "duration": "Duration",
+    "team_size": "Team Size",
+    "role": "Role",
+    "architecture": "Architecture & Technical Details",
+    "performance": "Performance & Optimization",
+    "challenges": "Challenges Faced",
+    "solutions": "Solutions Implemented",
+    "lessons_learned": "Lessons Learned",
+    "view_code_btn": "View Code",
+    "live_demo_btn": "Live Demo"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's discuss your next project or opportunity",
+    "message": "I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology. Feel free to reach out!",
+    "email": "Email",
+    "location": "Location",
+    "social": "Follow me on social media"
+  },
+  "awards": {
+    "title": "Awards & Certifications",
+    "subtitle": "Recognition of my professional achievements, certifications, and contributions to the tech industry",
+    "all": "All",
+    "awards": "Awards",
+    "achievements": "Achievements",
+    "certifications": "Certifications",
+    "show_credential": "Show Credential",
+    "view_certificate": "View Certificate"
+  },
+  "testimonials": {
+    "title": "Testimonials and Recommendations",
+    "subtitle": "What people say about working with me",
+    "rating": "Rating",
+    "project": "Project",
+    "read_more": "Read More",
+    "read_less": "Read Less"
+  },
+  "footer": {
+    "made_with": "Made with",
+    "by": "by",
+    "rights": "All rights reserved"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "en": "English",
+    "ar": "العربية"
+  }
+}
