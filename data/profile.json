@@ -5,11 +5,14 @@
     "email": "your.email@example.com",
     "location": "Karachi, Pakistan",
     "avatar": "/images/avatar.jpg",
-    "bio": "Passionate full-stack engineer with expertise in modern web technologies. I love building scalable applications and solving complex problems.",
+    "yearsOfExperience": "5+",
+    "numberOfProjects": "15",
+    "responseTime": "9 AM - 5 PM PST",
+    "bio": "Passionate full-stack engineer with 5+ years of expertise in modern web technologies. I love building scalable applications and solving complex problems.",
     "social": {
       "github": "https://github.com/mzamaann-dev",
       "linkedin": "https://linkedin.com/in/mzamaann",
-      "portfolio": "https://yourportfolio.com"
+      "portfolio": "https://mzamaann-dev.github.io/portfolio/"
     }
   },
   "skills": {
@@ -181,23 +184,23 @@
       "name": "Intermediate SQL",
       "issuer": "DataCamp",
       "date": "June 2025",
-      "credential_id": "DC-SQL-2025",
-      "url": "https://www.datacamp.com/certificate/DC-SQL-2025",
-      "description": "Completed the Intermediate SQL course, demonstrating proficiency in SQL and PostgreSQL.",
+      "credential_id": "4d7cfa3add9ce7b46ca89952b391bb3eb58c7155",
+      "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/4d7cfa3add9ce7b46ca89952b391bb3eb58c7155",
+      "description": "SQL is widely recognized as the most popular language for turning raw data stored in a database into actionable insights. This course uses a films database to teach how to navigate and extract insights from the data using SQL.",
       "type": "certification",
-      "tags": ["sql", "postgresql"],
+      "tags": ["sql", "postgresql", "datacamp"],
       "icon": "database"
     },
     {
       "id": 2,
       "name": "Modern React with Redux",
       "issuer": "Udemy",
-      "date": "March 2024",
-      "credential_id": "UD-REACT-2024",
-      "url": "https://www.udemy.com/certificate/UD-REACT-2024",
-      "description": "Completed the Modern React with Redux course, covering advanced React patterns and Redux for state management.",
+      "date": "August 2021",
+      "credential_id": "UC-7fa6f07a-378c-40db-a2e8-e9b62abce01a",
+      "url": "https://www.udemy.com/certificate/UC-7fa6f07a-378c-40db-a2e8-e9b62abce01a/",
+      "description": "This certificate recognizes the successful completion of an advanced training program in Modern Web Application Development. The course focused on building dynamic, responsive web apps using cutting-edge technologies including React, TypeScript, Redux, and TailwindCSS. Learners developed job-ready programming skills through hands-on projects, mastering key concepts such as client-side routing with React Router, robust form handling, API integration, state management with Redux Toolkit and Immer, and efficient data display techniques. The program prepares participants for roles in software engineering by emphasizing real-world application and performance optimization.",
       "type": "certification",
-      "tags": ["react", "redux", "javascript"],
+      "tags": ["react", "redux", "javascript", "udemy", "typescript", "tailwindcss"],
       "icon": "code"
     },
     {
@@ -211,38 +214,132 @@
       "type": "certification",
       "tags": ["c#", "dotnet", "api"],
       "icon": "code"
+    },
+    {
+      "id": 4,
+      "name": "Tailwind CSS 3 - Essential Training",
+      "issuer": "LinkedIn",
+      "date": "April 2024",
+      "credential_id": "42e24b0753d196565b304d60b15e55aeab8ce4cc4370f4b2b0d4c1fec6a10cf3",
+      "url": "https://www.linkedin.com/learning/certificates/42e24b0753d196565b304d60b15e55aeab8ce4cc4370f4b2b0d4c1fec6a10cf3",
+      "description": "This certificate recognizes the successful completion of a comprehensive course on Tailwind CSS 3, focusing on the utility-first approach to modern web development. Led by LinkedIn Senior Staff Instructor Ray Villalobos, the course covered advanced techniques for building responsive, fully customized websites without writing traditional CSS. Participants gained hands-on experience using GitHub Codespaces, explored Tailwind’s core features, and learned to enhance designs through plugins for typography, layout, and content styling.",
+      "type": "certification",
+      "tags": ["tailwind", "css", "linkedin"],
+      "icon": "code"
+    },
+    {
+      "id": 5,
+      "name": "Foundation of Digital Marketing & E-commerce",
+      "issuer": "Coursera - Google",
+      "date": "August 2023",
+      "credential_id": "BXTWYBENZC2G",
+      "url": "https://www.coursera.org/account/accomplishments/verify/BXTWYBENZC2G",
+      "description": "This certificate acknowledges the successful completion of foundational training in Digital Marketing and E-Commerce. The program covered core concepts including the definitions and key components of digital marketing and e-commerce, the responsibilities of entry-level roles in these fields, the structure and purpose of a marketing funnel, and the essential elements of a successful digital marketing and e-commerce strategy.",
+      "type": "certification",
+      "tags": ["digital marketing", "e-commerce", "coursera"],
+      "icon": "code"
+    },
+    {
+      "id": 6,
+      "name": "Introduction to Front-End Development",
+      "issuer": "Coursera - Meta",
+      "date": "January 2023",
+      "credential_id": "VD9X944FNTNS",
+      "url": "https://www.coursera.org/account/accomplishments/verify/VD9X944FNTNS",
+      "description": "This certificate acknowledges the successful completion of foundational training in Front-End Development. The program covered core concepts including the definitions and key components of Front-End Development, the responsibilities of entry-level roles in these fields, the structure and purpose of a marketing funnel, and the essential elements of a successful digital marketing and e-commerce strategy.",
+      "type": "certification",
+      "tags": ["front-end", "development", "coursera", "meta"],
+      "icon": "code"
+    },
+    {
+      "id": 7,
+      "name": "Version Control with Git",
+      "issuer": "Coursera - Meta",
+      "date": "February 2023",
+      "credential_id": "JVJUQ7ZET9UJ",
+      "url": "https://www.coursera.org/account/accomplishments/verify/JVJUQ7ZET9UJ",
+      "description": "This certificate acknowledges the successful completion of foundational training in Version Control with Git. The program covered core concepts including the definitions and key components of Version Control with Git, the responsibilities of entry-level roles in these fields, the structure and purpose of a marketing funnel, and the essential elements of a successful digital marketing and e-commerce strategy.",
+      "type": "certification",
+      "tags": ["git", "coursera", "meta"],
+      "icon": "code"
+    },
+    {
+      "id": 8,
+      "name": "React Basics",
+      "issuer": "Coursera - Meta",
+      "date": "February 2023",
+      "credential_id": "FMDXQ5CHP6X7",
+      "url": "https://www.coursera.org/account/accomplishments/verify/FMDXQ5CHP6X7",
+      "description": "This certificate acknowledges the successful completion of foundational training in Version Control with Git. The program covered core concepts including the definitions and key components of Version Control with Git, the responsibilities of entry-level roles in these fields, the structure and purpose of a marketing funnel, and the essential elements of a successful digital marketing and e-commerce strategy.",
+      "type": "certification",
+      "tags": ["git", "coursera", "meta", "react"],
+      "icon": "code"
+    },
+    {
+      "id": 9,
+      "name": "Programming with JavaScript",
+      "issuer": "Coursera - Meta",
+      "date": "February 2023",
+      "credential_id": "EMVL55Q6RV3N",
+      "url": "https://www.coursera.org/account/accomplishments/verify/EMVL55Q6RV3N",
+      "description": "This certificate acknowledges the successful completion of foundational training in Version Control with Git. The program covered core concepts including the definitions and key components of Version Control with Git, the responsibilities of entry-level roles in these fields, the structure and purpose of a marketing funnel, and the essential elements of a successful digital marketing and e-commerce strategy.",
+      "type": "certification",
+      "tags": ["javascript", "coursera", "meta"],
+      "icon": "code"
+    },
+    {
+      "id": 10,
+      "name": "Advanced React",
+      "issuer": "Coursera - Meta",
+      "date": "March 2023",
+      "credential_id": "HJ9S82LM4JQX",
+      "url": "https://www.coursera.org/account/accomplishments/verify/HJ9S82LM4JQX",
+      "description": "This certificate acknowledges the successful completion of foundational training in Version Control with Git. The program covered core concepts including the definitions and key components of Version Control with Git, the responsibilities of entry-level roles in these fields, the structure and purpose of a marketing funnel, and the essential elements of a successful digital marketing and e-commerce strategy.",
+      "type": "certification",
+      "tags": ["react", "coursera", "meta"],
+      "icon": "code"
     }
   ],
   "awards": [
     {
       "id": 1,
-      "name": "Employee of the Month",
-      "issuer": "Techlogix",
-      "date": "April 2022",
-      "description": "Recognized for exceptional performance and leadership in software development",
+      "name": "Employee of the Year",
+      "issuer": "Leaptech Solutions",
+      "date": "March 2020",
+      "description": "Awarded for exceptional performance and leadership in software development",
       "type": "award",
-      "tags": ["react", "typescript", "dotnet"],
+      "tags": ["C#", "ASP.NET", "Entity Framework", "leaptech"],
       "icon": "trophy"
     },
     {
       "id": 2,
+      "name": "Acheiver of the Month - Feb 2022",
+      "issuer": "Techlogix",
+      "date": "March 2022",
+      "description": "Awarded for exceptional performance and leadership in the month of February 2022",
+      "type": "award",
+      "tags": ["techlogix"],
+      "icon": "trophy"
+    },
+    {
+      "id": 3,
+      "name": "Cummulative Excellence Award",
+      "issuer": "Zepcom/Allshore Virtual Talent",
+      "date": "September 2023",
+      "description": "Awarded for exceptional performance and leadership in the month of September 2023",
+      "type": "award",
+      "tags": ["zepcom", "allshore", "virtual talent"],
+      "icon": "trophy"
+    },
+    {
+      "id": 4,
       "name": "Team Leadership Excellence",
       "issuer": "Techlogix",
-      "date": "December 2023",
+      "date": "March 2023",
       "description": "Recognized for outstanding leadership and mentoring of junior developers",
       "type": "achievement",
       "tags": ["leadership", "mentoring", "teamwork"],
       "icon": "users"
-    },
-    {
-      "id": 3,
-      "name": "Employee Excellence Award",
-      "issuer": "Zepcom/Allshore Virtual Talent",
-      "date": "September 2023",
-      "description": "Awarded for exceptional contributions to project success and team collaboration",
-      "type": "award",
-      "tags": ["excellence", "collaboration", "project-management"],
-      "icon": "award"
     }
   ],
   "projects": [
@@ -564,7 +661,7 @@
     },
     {
       "id": 8,
-      "title": "Custom Authentication & Reporting Module",
+      "title": "Hero Life Insurance System",
       "description": "Developed a custom authentication and reporting module while collaborating with Design, DevOps, QA teams, and US clients. Implemented user, role, and permission management from scratch with advanced multi-factor authentication, and built robust reporting with Telerik and SQL Server.",
       "technologies": [
         ".NET 6",
@@ -658,7 +755,18 @@
       "id": 10,
       "title": "SwiftHR Leave Management",
       "description": "Developed SwiftHR Leave Management, a personal project for managing employee leave requests, approvals, and tracking. Built using Blazor WebAssembly with a Clean Architecture approach, leveraging ASP.NET Core, Entity Framework Core, and CQRS for maintainable, scalable, and efficient leave management.",
-      "technologies": ["Blazor WebAssembly", "ASP.NET Core", "C#", "Entity Framework Core", "Clean Architecture", "ASP.NET Identity", "REST APIs", "CQRS", "AutoMapper", "Repository Pattern"],
+      "technologies": [
+        "Blazor WebAssembly",
+        "ASP.NET Core",
+        "C#",
+        "Entity Framework Core",
+        "Clean Architecture",
+        "ASP.NET Identity",
+        "REST APIs",
+        "CQRS",
+        "AutoMapper",
+        "Repository Pattern"
+      ],
       "github_url": "https://github.com/mzamann1/SwiftHR.LeaveManagement",
       "live_url": "",
       "image": "/images/projects/swifthr-leave-management.jpg",
@@ -695,7 +803,16 @@
       "id": 11,
       "title": "Noor Lubricants",
       "description": "Developed a full-fledged financial and inventory management system for Noor Lubricants while associated with Leaptech Solutions. The system handles sales, purchases, inventory transfers, and financial reporting, including balance sheets and income statements, providing the client with complete control over their operations.",
-      "technologies": ["ASP.NET MVC", "ASP.NET Core", "C#", "JavaScript", "SQL Server", "REST APIs", "jQuery", "Ample Admin Theme"],
+      "technologies": [
+        "ASP.NET MVC",
+        "ASP.NET Core",
+        "C#",
+        "JavaScript",
+        "SQL Server",
+        "REST APIs",
+        "jQuery",
+        "Ample Admin Theme"
+      ],
       "github_url": "",
       "live_url": "",
       "image": "/images/projects/noor-lubricants.jpg",
@@ -728,7 +845,7 @@
       ]
     }
   ],
-  
+
   "testimonials": [
     {
       "id": 1,
@@ -774,10 +891,8 @@
       "project": "Condado - VFW Accounting System, Traffk Agent Portal, Hero Life Insurance System",
       "date": "2023"
     }
-    
-    
   ],
-  
+
   "languages": [
     {
       "name": "English",

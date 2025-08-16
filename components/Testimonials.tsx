@@ -2,10 +2,10 @@
 
 import { useTranslation } from 'react-i18next';
 import { motion, useInView } from 'framer-motion';
-import { Star, Quote, ChevronLeft, ChevronRight, User } from 'lucide-react';
+import { Star, Quote, ChevronLeft, ChevronRight, User, Pause, Play } from 'lucide-react';
 import profileData from '@/data/profile.json';
 import '@/lib/i18n';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface Testimonial {
   id: number;
@@ -23,7 +23,10 @@ export default function Testimonials() {
   const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expandedTestimonial, setExpandedTestimonial] = useState<number | null>(null);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
   const containerRef = useRef(null);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   const testimonials: Testimonial[] = profileData.testimonials;
@@ -36,8 +39,53 @@ export default function Testimonials() {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  const goToTestimonial = (index: number) => {
+    setCurrentIndex(index);
+    // Pause auto-play briefly when user manually navigates
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 3000);
+  };
+
+  const toggleAutoPlay = () => {
+    setIsAutoPlaying(!isAutoPlaying);
+  };
+
   const toggleExpanded = (id: number) => {
     setExpandedTestimonial(expandedTestimonial === id ? null : id);
+  };
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying || isPaused || !isInView) {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+        autoPlayRef.current = null;
+      }
+      return;
+    }
+
+    autoPlayRef.current = setInterval(() => {
+      nextTestimonial();
+    }, 5000); // 5 seconds interval
+
+    return () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+      }
+    };
+  }, [isAutoPlaying, isPaused, isInView, testimonials.length]);
+
+  // Pause auto-play when user hovers over the carousel
+  const handleMouseEnter = () => {
+    if (isAutoPlaying) {
+      setIsPaused(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isAutoPlaying) {
+      setIsPaused(false);
+    }
   };
 
   const containerVariants = {
@@ -63,18 +111,18 @@ export default function Testimonials() {
     },
   };
 
-     const renderStars = (rating: number) => {
-     return Array.from({ length: 5 }, (_, index) => (
-       <Star
-         key={index}
-         className={`w-6 h-6 ${
-           index < rating
-             ? 'text-yellow-400 fill-current'
-             : 'text-gray-300'
-         }`}
-       />
-     ));
-   };
+  const renderStars = (rating: number) => {
+    return Array.from({ length: 5 }, (_, index) => (
+      <Star
+        key={index}
+        className={`w-6 h-6 ${
+          index < rating
+            ? 'text-yellow-400 fill-current'
+            : 'text-gray-300'
+        }`}
+      />
+    ));
+  };
 
   return (
     <section id="testimonials" className="py-20 bg-gray-50 dark:bg-dark-900">
@@ -104,7 +152,35 @@ export default function Testimonials() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="relative"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
+          {/* Auto-play Control */}
+          <div className="flex justify-center mb-6">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleAutoPlay}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                isAutoPlaying
+                  ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 border border-primary-200 dark:border-primary-800'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700'
+              }`}
+            >
+              {isAutoPlaying ? (
+                <>
+                  <Pause className="w-4 h-4" />
+                  <span>{t('testimonials.pause_autoplay')}</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-4 h-4" />
+                  <span>{t('testimonials.start_autoplay')}</span>
+                </>
+              )}
+            </motion.button>
+          </div>
+
           {/* Main Testimonial Card */}
           <motion.div
             variants={itemVariants}
@@ -120,59 +196,59 @@ export default function Testimonials() {
               </div>
             </div>
 
-                         {/* Testimonial Content */}
-             <div className="text-left mb-8">
-               <motion.p
-                 key={currentIndex}
-                 initial={{ opacity: 0, y: 20 }}
-                 animate={{ opacity: 1, y: 0 }}
-                 transition={{ duration: 0.5 }}
-                 className={`text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed ${
-                   expandedTestimonial === testimonials[currentIndex].id
-                     ? ''
-                     : 'line-clamp-4'
-                 }`}
-               >
-                 "{testimonials[currentIndex].content}"
-               </motion.p>
-               
-               {testimonials[currentIndex].content.length > 200 && (
-                 <button
-                   onClick={() => toggleExpanded(testimonials[currentIndex].id)}
-                   className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium mt-2 transition-colors duration-200"
-                 >
-                   {expandedTestimonial === testimonials[currentIndex].id
-                     ? t('testimonials.read_less')
-                     : t('testimonials.read_more')}
-                 </button>
-               )}
-             </div>
+            {/* Testimonial Content */}
+            <div className="text-left mb-8">
+              <motion.p
+                key={currentIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className={`text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed ${
+                  expandedTestimonial === testimonials[currentIndex].id
+                    ? ''
+                    : 'line-clamp-4'
+                }`}
+              >
+                "{testimonials[currentIndex].content}"
+              </motion.p>
+              
+              {testimonials[currentIndex].content.length > 200 && (
+                <button
+                  onClick={() => toggleExpanded(testimonials[currentIndex].id)}
+                  className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium mt-2 transition-colors duration-200"
+                >
+                  {expandedTestimonial === testimonials[currentIndex].id
+                    ? t('testimonials.read_less')
+                    : t('testimonials.read_more')}
+                </button>
+              )}
+            </div>
 
-                                      {/* Author Info */}
-             <div className="flex items-start space-x-4">
-               <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center flex-shrink-0">
-                 <User className="w-8 h-8 md:w-10 md:h-10 text-white" />
-               </div>
-               <div className="text-left">
-                 <h4 className="text-xl font-semibold text-gray-900 dark:text-white">
-                   {testimonials[currentIndex].name}
-                 </h4>
-                 <p className="text-gray-600 dark:text-gray-400">
-                   {testimonials[currentIndex].position}
-                 </p>
-                 <p className="text-primary-600 dark:text-primary-400 font-medium">
-                   {testimonials[currentIndex].company}
-                 </p>
-                 <div className="mt-3">
-                   <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                     {t('testimonials.project')}:
-                   </span>
-                   <p className="text-sm text-gray-700 dark:text-gray-300 mt-1 leading-relaxed">
-                     {testimonials[currentIndex].project}
-                   </p>
-                 </div>
-               </div>
-             </div>
+            {/* Author Info */}
+            <div className="flex items-start space-x-4">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center flex-shrink-0">
+                <User className="w-8 h-8 md:w-10 md:h-10 text-white" />
+              </div>
+              <div className="text-left">
+                <h4 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  {testimonials[currentIndex].name}
+                </h4>
+                <p className="text-gray-600 dark:text-gray-400">
+                  {testimonials[currentIndex].position}
+                </p>
+                <p className="text-primary-600 dark:text-primary-400 font-medium">
+                  {testimonials[currentIndex].company}
+                </p>
+                <div className="mt-3">
+                  <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+                    {t('testimonials.project')}:
+                  </span>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-1 leading-relaxed">
+                    {testimonials[currentIndex].project}
+                  </p>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           {/* Navigation Buttons */}
@@ -191,7 +267,7 @@ export default function Testimonials() {
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentIndex(index)}
+                  onClick={() => goToTestimonial(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentIndex
                       ? 'bg-primary-600 dark:bg-primary-400 scale-125'
@@ -210,6 +286,18 @@ export default function Testimonials() {
               <ChevronRight className="w-6 h-6 text-gray-700 dark:text-gray-300" />
             </motion.button>
           </div>
+
+          {/* Auto-play Status Indicator */}
+          {isAutoPlaying && (
+            <div className="flex justify-center mt-4">
+              <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  isPaused ? 'bg-gray-400' : 'bg-primary-500 animate-pulse'
+                }`} />
+                <span>{isPaused ? t('testimonials.paused') : t('testimonials.auto_playing')}</span>
+              </div>
+            </div>
+          )}
         </motion.div>
 
         {/* Testimonial Grid (Desktop) */}
@@ -225,23 +313,23 @@ export default function Testimonials() {
               variants={itemVariants}
               className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-dark-700 hover:border-primary-400 dark:hover:border-primary-500"
             >
-                             <div className="flex items-center mb-4">
-                 <div className="flex space-x-1 mr-3">
-                   {Array.from({ length: 5 }, (_, index) => (
-                     <Star
-                       key={index}
-                       className={`w-4 h-4 ${
-                         index < testimonial.rating
-                           ? 'text-yellow-400 fill-current'
-                           : 'text-gray-300'
-                       }`}
-                     />
-                   ))}
-                 </div>
-                 <span className="text-sm text-gray-500 dark:text-gray-400">
-                   {testimonial.date}
-                 </span>
-               </div>
+              <div className="flex items-center mb-4">
+                <div className="flex space-x-1 mr-3">
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <Star
+                      key={index}
+                      className={`w-4 h-4 ${
+                        index < testimonial.rating
+                          ? 'text-yellow-400 fill-current'
+                          : 'text-gray-300'
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  {testimonial.date}
+                </span>
+              </div>
 
               <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-4 line-clamp-4">
                 "{testimonial.content}"

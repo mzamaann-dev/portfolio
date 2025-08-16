@@ -32,7 +32,6 @@ export default function Header() {
     { href: '#home', label: t('nav.home') },
     { href: '#about', label: t('nav.about') },
     { href: '#experience', label: t('nav.experience') },
-    { href: '#education', label: t('nav.education') },
     { href: '#projects', label: t('nav.projects') },
     { href: '#awards', label: t('nav.awards') },
     { href: '#testimonials', label: t('nav.testimonials') },
