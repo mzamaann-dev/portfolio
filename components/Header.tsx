@@ -10,8 +10,7 @@ import '@/lib/i18n';
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸', dir: 'ltr' },
-  // Future Arabic support
-  // { code: 'ar', name: 'العربية', flag: '🇸🇦', dir: 'rtl' },
+  { code: 'ar', name: 'العربية', flag: '🇸🇦', dir: 'rtl' },
 ];
 
 const themes = [
@@ -27,16 +26,36 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-  const navItems = [
-    { href: '#home', label: t('nav.home') },
-    { href: '#about', label: t('nav.about') },
-    { href: '#experience', label: t('nav.experience') },
-    { href: '#projects', label: t('nav.projects') },
-    { href: '#awards', label: t('nav.awards') },
-    { href: '#testimonials', label: t('nav.testimonials') },
-    { href: '#contact', label: t('nav.contact') },
-  ];
+  const [navItems, setNavItems] = useState([
+    { href: '#home', label: 'Home' },
+    { href: '#about', label: 'About' },
+    { href: '#experience', label: 'Experience' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#awards', label: 'Awards' },
+    { href: '#testimonials', label: 'Testimonials' },
+    { href: '#contact', label: 'Contact' },
+  ]);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient) {
+      // Update nav items after i18n is initialized
+      setNavItems([
+        { href: '#home', label: t('nav.home') },
+        { href: '#about', label: t('nav.about') },
+        { href: '#experience', label: t('nav.experience') },
+        { href: '#projects', label: t('nav.projects') },
+        { href: '#awards', label: t('nav.awards') },
+        { href: '#testimonials', label: t('nav.testimonials') },
+        { href: '#contact', label: t('nav.contact') },
+      ]);
+    }
+  }, [t, isClient]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,13 +76,6 @@ export default function Header() {
   const changeLanguage = (langCode: string) => {
     i18n.changeLanguage(langCode);
     setIsLanguageOpen(false);
-    
-    // Set document direction for RTL support
-    const selectedLang = languages.find(lang => lang.code === langCode);
-    if (selectedLang) {
-      document.documentElement.dir = selectedLang.dir;
-      document.documentElement.lang = langCode;
-    }
   };
 
 
@@ -73,14 +85,14 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 header-main',
         isScrolled
           ? 'bg-white/80 dark:bg-dark-900/80 backdrop-blur-md border-b border-gray-200/20'
           : 'bg-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 header-container">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -90,7 +102,7 @@ export default function Header() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
             {navItems.map((item) => (
               <motion.button
                 key={item.href}
@@ -105,14 +117,14 @@ export default function Header() {
           </nav>
 
           {/* Controls */}
-          <div className="flex items-center space-x-2 md:space-x-4">
+          <div className="flex items-center space-x-2 md:space-x-4 rtl:space-x-reverse">
             {/* Language Selector */}
             <div className="relative">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-                className="flex items-center space-x-1 md:space-x-2 px-2 md:px-3 py-2 rounded-xl bg-white/90 dark:bg-dark-800/90 hover:bg-white dark:hover:bg-dark-700 border border-gray-200 dark:border-dark-700 transition-colors text-gray-700 dark:text-gray-300"
+                className="flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse px-2 md:px-3 py-2 rounded-xl bg-white/90 dark:bg-dark-800/90 hover:bg-white dark:hover:bg-dark-700 border border-gray-200 dark:border-dark-700 transition-colors text-gray-700 dark:text-gray-300"
               >
                 <Globe className="w-4 h-4" />
                 <span className="hidden sm:inline">{languages.find(lang => lang.code === i18n.language)?.name || 'English'}</span>
@@ -120,12 +132,12 @@ export default function Header() {
               </motion.button>
 
               {isLanguageOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-dark-800 rounded-xl shadow-lg border border-gray-200 dark:border-dark-700">
+                <div className="absolute right-0 rtl:left-0 rtl:right-auto mt-2 w-48 bg-white dark:bg-dark-800 rounded-xl shadow-lg border border-gray-200 dark:border-dark-700">
                   {languages.map((language) => (
                     <button
                       key={language.code}
                       onClick={() => changeLanguage(language.code)}
-                      className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-dark-700 transition-colors ${
+                      className={`w-full text-left rtl:text-right px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-dark-700 transition-colors ${
                         i18n.language === language.code
                           ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
                           : 'text-gray-700 dark:text-gray-300'
@@ -144,7 +156,7 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsThemeOpen(!isThemeOpen)}
-                className="flex items-center space-x-1 md:space-x-2 px-2 md:px-3 py-2 rounded-xl bg-white/90 dark:bg-dark-800/90 hover:bg-white dark:hover:bg-dark-700 border border-gray-200 dark:border-dark-700 transition-colors text-gray-700 dark:text-gray-300"
+                className="flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse px-2 md:px-3 py-2 rounded-xl bg-white/90 dark:bg-dark-800/90 hover:bg-white dark:hover:bg-dark-700 border border-gray-200 dark:border-dark-700 transition-colors text-gray-700 dark:text-gray-300"
               >
                 <Sun className="w-4 h-4" />
                 <span className="hidden sm:inline">{themes.find(t => t.value === theme)?.label || 'System'}</span>
@@ -152,12 +164,12 @@ export default function Header() {
               </motion.button>
 
               {isThemeOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-dark-800 rounded-xl shadow-lg border border-gray-200 dark:border-dark-700">
+                <div className="absolute right-0 rtl:left-0 rtl:right-auto mt-2 w-48 bg-white dark:bg-dark-800 rounded-xl shadow-lg border border-gray-200 dark:border-dark-700">
                   {themes.map((themeOption) => (
                     <button
                       key={themeOption.value}
                       onClick={() => setTheme(themeOption.value as 'light' | 'dark' | 'system')}
-                      className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-dark-700 transition-colors ${
+                      className={`w-full text-left rtl:text-right px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-dark-700 transition-colors ${
                         theme === themeOption.value
                           ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
                           : 'text-gray-700 dark:text-gray-300'
@@ -196,7 +208,7 @@ export default function Header() {
                   <button
                     key={item.href}
                     onClick={() => handleNavClick(item.href)}
-                    className="block w-full text-left px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-dark-800 transition-colors rounded-lg"
+                    className="block w-full text-left rtl:text-right px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-dark-800 transition-colors rounded-lg"
                   >
                     {item.label}
                   </button>

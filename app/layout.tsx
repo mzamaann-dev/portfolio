@@ -1,23 +1,32 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import './fonts.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import PWAProvider from '@/components/PWAProvider';
+import LighthouseMonitor from '@/components/LighthouseMonitor';
+import LanguageProvider from '@/components/LanguageProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Portfolio - Full Stack Engineer',
   description: 'Professional portfolio showcasing full-stack development projects and skills',
-  keywords: ['portfolio', 'full stack', 'developer', 'react', 'next.js', 'typescript'],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
+  keywords: ['portfolio', 'full stack', 'full stack developer', 'dot net', 'dotnet developer', '.net', 'dotnet', '.net core', 'c# developer', 'c#', '.net core developer', '.net developer', 'ASP.NET Developer', 'Oracle Developer', 'developer', 'react', 'next.js', 'typescript', 'web development', 'web design', 'web development services', 'web design services', 'web development company', 'web design company', 'web development agency', 'web design agency', 'web development services', 'web design services', 'web development company', 'web design company', 'web development agency', 'web design agency'],
+  authors: [{ name: 'Muhammad Zaman' }],
+  creator: 'Muhammad Zaman',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://yourportfolio.com',
+    url: 'https://mzamaann.dev',
     title: 'Portfolio - Full Stack Engineer',
     description: 'Professional portfolio showcasing full-stack development projects and skills',
     siteName: 'Portfolio',
@@ -39,20 +48,40 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning className="font-sans">
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/gumela-arabic-regular.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/gumela-arabic-bold.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className={inter.className}>
         <ErrorBoundary>
           <ThemeProvider>
-            <a href="#main-content" className="skip-link">
-              Skip to main content
-            </a>
-            <div className="min-h-screen bg-white dark:bg-dark-900">
-              <Header />
-              <main id="main-content">
-                {children}
-              </main>
-              <Footer />
-            </div>
+            <LanguageProvider>
+              <PWAProvider />
+              <LighthouseMonitor />
+              <a href="#main-content" className="skip-link">
+                Skip to main content
+              </a>
+              <div className="min-h-screen bg-white dark:bg-dark-900">
+                <Header />
+                <main id="main-content">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </LanguageProvider>
           </ThemeProvider>
         </ErrorBoundary>
       </body>

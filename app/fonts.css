@@ -1,0 +1,35 @@
+/* Custom Font Definitions */
+
+
+
+
+
+/* Arabic Font - Gumela */
+@font-face {
+  font-family: 'GumelaArabic';
+  src: url('/fonts/gumela-arabic-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+  font-family: 'GumelaArabic';
+  src: url('/fonts/gumela-arabic-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+@font-face {
+  font-family: 'GumelaArabic';
+  src: url('/fonts/gumela-arabic-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
+/* You can add more font variations here */

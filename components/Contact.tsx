@@ -3,16 +3,17 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Mail, MapPin, Github, Linkedin, Globe, Clock, CheckCircle, MessageCircle, Calendar } from 'lucide-react';
-import profileData from '@/data/profile.json';
+import { getProfileData } from '@/lib/profileData';
 import '@/lib/i18n';
 
 export default function Contact() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const ref = useRef(null);
   const containerRef = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [profileData, setProfileData] = useState(getProfileData('en'));
 
   // Parallax effects
   const { scrollYProgress } = useScroll({
@@ -27,6 +28,11 @@ export default function Contact() {
   const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
   const springY2 = useSpring(y2, { stiffness: 100, damping: 30 });
   const springY3 = useSpring(y3, { stiffness: 100, damping: 30 });
+
+  // Update profile data when language changes
+  useEffect(() => {
+    setProfileData(getProfileData(i18n.language));
+  }, [i18n.language]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -132,7 +138,7 @@ export default function Contact() {
             {/* Contact Details */}
             <motion.div variants={itemVariants} className="bg-white/90 dark:bg-dark-800/90 backdrop-blur-sm rounded-3xl p-6 lg:p-8 shadow-lg border border-white/20 dark:border-dark-700/50">
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-                Get in touch
+                {t('contact.title')}
               </h3>
               
               <div className="space-y-4">

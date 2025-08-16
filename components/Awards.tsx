@@ -1,23 +1,24 @@
 'use client';
 
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState, useMemo } from 'react';
+import { useRef, useState, useMemo, useEffect } from 'react';
 import { Award, Calendar, ArrowRight, ChevronRight, ArrowUp, ArrowDown, Database, Code, Users, Trophy, FileText, X, ExternalLink } from 'lucide-react';
-import profileData from '@/data/profile.json';
+import { getProfileData } from '@/lib/profileData';
 import '@/lib/i18n';
-import React from 'react';
 
-export default function Awards() {
-  const { t } = useTranslation();
+function Awards() {
+  const { t, i18n } = useTranslation();
   const ref = useRef(null);
   const containerRef = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeFilter, setActiveFilter] = useState('all');
-  const [selectedItem, setSelectedItem] = useState<typeof profileData.awards[0] | typeof profileData.certifications[0] | null>(null);
+  const [selectedItem, setSelectedItem] = useState<any>(null);
   const [viewMode, setViewMode] = useState<'showcase' | 'timeline'>('showcase');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+  const [profileData, setProfileData] = useState(getProfileData(i18n.language));
 
   // Parallax effects
   const { scrollYProgress } = useScroll({
@@ -32,6 +33,11 @@ export default function Awards() {
   const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
   const springY2 = useSpring(y2, { stiffness: 100, damping: 30 });
   const springY3 = useSpring(y3, { stiffness: 100, damping: 30 });
+
+  // Update profile data when language changes
+  useEffect(() => {
+    setProfileData(getProfileData(i18n.language));
+  }, [i18n.language]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -74,7 +80,7 @@ export default function Awards() {
     if (!isNaN(date.getTime())) {
       return date;
     }
-    
+
     // Handle "Month Year" format (e.g., "January 2024")
     const monthYearMatch = dateString.match(/(\w+)\s+(\d{4})/);
     if (monthYearMatch) {
@@ -83,7 +89,7 @@ export default function Awards() {
       const monthIndex = new Date(`${month} 1, ${year}`).getMonth();
       return new Date(year, monthIndex, 1);
     }
-    
+
     // Fallback to current date if parsing fails
     return new Date();
   };
@@ -94,7 +100,7 @@ export default function Awards() {
       ...profileData.awards.map(item => ({ ...item, category: 'awards', parsedDate: parseDate(item.date) })),
       ...profileData.certifications.map(item => ({ ...item, category: 'certifications', parsedDate: parseDate(item.date) }))
     ];
-    
+
     // Sort by date based on sort order
     return items.sort((a, b) => {
       if (sortOrder === 'asc') {
@@ -103,12 +109,12 @@ export default function Awards() {
         return b.parsedDate.getTime() - a.parsedDate.getTime();
       }
     });
-  }, [sortOrder]);
+  }, [sortOrder, profileData.awards, profileData.certifications]);
 
   // Filter items based on active filter
   const filteredItems = useMemo(() => {
-    return activeFilter === 'all' 
-      ? allItems 
+    return activeFilter === 'all'
+      ? allItems
       : allItems.filter(item => item.type === activeFilter || item.category === activeFilter);
   }, [allItems, activeFilter]);
 
@@ -153,7 +159,7 @@ export default function Awards() {
   ];
 
   return (
-    <section ref={containerRef} id="awards" className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 relative overflow-hidden">
+    <section key={i18n.language} ref={containerRef} id="awards" className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 relative overflow-hidden">
       {/* Parallax Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
@@ -183,12 +189,12 @@ export default function Awards() {
           >
             {t('awards.title')}
           </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
-          >
-            {t('awards.subtitle')}
-          </motion.p>
+                     <motion.p
+             variants={itemVariants}
+             className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+           >
+             {t('awards.subtitle')}
+           </motion.p>
         </motion.div>
 
         {/* Achievement Statistics */}
@@ -198,7 +204,7 @@ export default function Awards() {
           animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
         >
-          {stats.map((stat, index) => {
+          {stats.map((stat) => {
             const Icon = stat.icon;
             return (
               <motion.div
@@ -234,23 +240,21 @@ export default function Awards() {
             <div className="flex space-x-2">
               <button
                 onClick={() => setViewMode('showcase')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                  viewMode === 'showcase'
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${viewMode === 'showcase'
                     ? 'bg-primary-600 text-white shadow-lg'
                     : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-700'
-                }`}
+                  }`}
               >
-                Showcase View
+                {t("awards.view.showcase")}
               </button>
               <button
                 onClick={() => setViewMode('timeline')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                  viewMode === 'timeline'
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${viewMode === 'timeline'
                     ? 'bg-primary-600 text-white shadow-lg'
                     : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-700'
-                }`}
+                  }`}
               >
-                Timeline View
+                {t("awards.view.timeline")}
               </button>
             </div>
           </div>
@@ -272,11 +276,10 @@ export default function Awards() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveFilter(filter.key)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur-sm ${
-                  activeFilter === filter.key
+                className={`flex items-center space-x-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur-sm ${activeFilter === filter.key
                     ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/25'
                     : 'bg-white/80 dark:bg-dark-800/80 text-gray-800 dark:text-gray-200 hover:bg-white dark:hover:bg-dark-700 border border-white/20 dark:border-dark-700/50'
-                }`}
+                  }`}
               >
                 <Icon className="w-4 h-4" />
                 <span>{filter.label}</span>
@@ -334,7 +337,7 @@ export default function Awards() {
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full -translate-y-32 translate-x-32"></div>
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-full translate-y-24 -translate-x-24"></div>
                   </div>
-                  
+
                   <div className="relative z-10">
                     <div className="flex items-start justify-between mb-6">
                       <div className="flex items-center space-x-4">
@@ -384,7 +387,7 @@ export default function Awards() {
                       whileTap={{ scale: 0.95 }}
                       className="inline-flex items-center space-x-3 bg-white text-primary-600 px-8 py-4 rounded-xl text-lg font-bold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
-                      <span>View Details</span>
+                      <span>{t("awards.view_details")}</span>
                       <ArrowRight className="w-5 h-5" />
                     </motion.button>
                   </div>
@@ -405,7 +408,7 @@ export default function Awards() {
                   >
                     {/* Card Background with Gradient Border */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-blue-600 rounded-2xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
+
                     <div className="relative bg-white/95 dark:bg-dark-800/95 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/20 dark:border-dark-700/50 overflow-hidden h-full flex flex-col">
                       {/* Top Section */}
                       <div className="flex items-start justify-between mb-6">
@@ -461,7 +464,7 @@ export default function Awards() {
                         whileTap={{ scale: 0.95 }}
                         className="w-full inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-primary-600 to-blue-600 hover:from-primary-700 hover:to-blue-700 text-white px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-xl group-hover:shadow-2xl mt-auto"
                       >
-                        <span>View Details</span>
+                        <span>{t("awards.view_details")}</span>
                         <ArrowRight className="w-4 h-4" />
                       </motion.button>
                     </div>
@@ -500,17 +503,17 @@ export default function Awards() {
           >
             {/* Timeline Line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary-500 to-blue-600 rounded-full"></div>
-            
+
             <div className="space-y-12">
               {filteredItems.map((item, index) => {
                 const Icon = getIcon(item.icon);
                 const isEven = index % 2 === 0;
-                
+
                 return (
                   <motion.div
                     key={`${item.category}-${item.id}`}
                     variants={itemVariants}
-                    className={`flex items-center ${isEven ? 'flex-row' : 'flex-row-reverse'}`}
+                    className={`flex items-center ${isEven ? 'flex-row rtl:!flex-row' : 'flex-row-reverse rtl:!flex-row-reverse'}`}
                   >
                     {/* Timeline Dot */}
                     <div className="relative z-10">
@@ -520,10 +523,10 @@ export default function Awards() {
                     {/* Content Card */}
                     <motion.div
                       whileHover={{ y: -5, scale: 1.02 }}
-                      className={`flex-1 ${isEven ? 'ml-8' : 'mr-8'} max-w-md`}
+                      className={`flex-1 ${isEven ? 'ml-8 rtl:mr-8 rtl:ml-0' : 'mr-8 rtl:ml-8 rtl:mr-0'} max-w-md`}
                     >
                       <div className="bg-white/90 dark:bg-dark-800/90 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 dark:border-dark-700/50">
-                        <div className="flex items-center space-x-3 mb-4">
+                        <div className="flex items-center space-x-3 rtl:space-x-reverse mb-4">
                           <div className="p-2 bg-gradient-to-br from-primary-500 to-blue-600 rounded-lg">
                             <Icon className="w-5 h-5 text-white" />
                           </div>
@@ -562,7 +565,7 @@ export default function Awards() {
                           onClick={() => handleViewCredential(item)}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="inline-flex items-center space-x-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm transition-colors duration-300"
+                          className="inline-flex items-center space-x-2 rtl:space-x-reverse text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm transition-colors duration-300"
                         >
                           <span>View Details</span>
                           <ChevronRight className="w-4 h-4" />
@@ -582,9 +585,8 @@ export default function Awards() {
         initial={{ opacity: 0 }}
         animate={{ opacity: selectedItem ? 1 : 0 }}
         exit={{ opacity: 0 }}
-        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 ${
-          selectedItem ? 'pointer-events-auto' : 'pointer-events-none'
-        }`}
+        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 ${selectedItem ? 'pointer-events-auto' : 'pointer-events-none'
+          }`}
         onClick={closeModal}
       >
         <motion.div
@@ -676,3 +678,5 @@ export default function Awards() {
     </section>
   );
 }
+
+export default React.memo(Awards);

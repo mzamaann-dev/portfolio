@@ -66,6 +66,8 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
+        custom: ['CustomFont', 'Inter', 'system-ui', 'sans-serif'],
+        arabic: ['GumelaArabic', 'Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

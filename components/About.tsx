@@ -3,18 +3,30 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { User, Code, Globe, Award, Star, TrendingUp, Users, Zap, Target, Heart, Sparkles } from 'lucide-react';
-import profileData from '@/data/profile.json';
+import { getProfileData } from '@/lib/profileData';
 import Counter from '@/components/Counter';
 import '@/lib/i18n';
 
 export default function About() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const ref = useRef(null);
   const containerRef = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeSkillCategory, setActiveSkillCategory] = useState('frontend');
+  const [isClient, setIsClient] = useState(false);
+  const [profileData, setProfileData] = useState(getProfileData('en'));
+  const [title, setTitle] = useState('About Me');
+  const [subtitle, setSubtitle] = useState('Passionate about creating innovative solutions');
+  const [languagesTitle, setLanguagesTitle] = useState('Languages');
+  const [skillsTitle, setSkillsTitle] = useState('Skills & Technologies');
+  const [skillCategories, setSkillCategories] = useState([
+    { key: 'frontend', title: 'Frontend', icon: Code, color: 'from-blue-500 to-cyan-500' },
+    { key: 'backend', title: 'Backend', icon: Code, color: 'from-green-500 to-emerald-500' },
+    { key: 'devops', title: 'DevOps', icon: Zap, color: 'from-purple-500 to-pink-500' },
+    { key: 'tools', title: 'Tools', icon: Target, color: 'from-orange-500 to-red-500' },
+  ]);
 
   // Parallax effects
   const { scrollYProgress } = useScroll({
@@ -29,6 +41,30 @@ export default function About() {
   const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
   const springY2 = useSpring(y2, { stiffness: 100, damping: 30 });
   const springY3 = useSpring(y3, { stiffness: 100, damping: 30 });
+
+  // Client-side initialization
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Update translations and profile data after i18n is initialized
+  useEffect(() => {
+    if (isClient) {
+      setTitle(t('about.title'));
+      setSubtitle(t('about.subtitle'));
+      setLanguagesTitle(t('about.languages.title'));
+      setSkillsTitle(t('about.skills.title'));
+      setSkillCategories([
+        { key: 'frontend', title: t('about.skills.frontend'), icon: Code, color: 'from-blue-500 to-cyan-500' },
+        { key: 'backend', title: t('about.skills.backend'), icon: Code, color: 'from-green-500 to-emerald-500' },
+        { key: 'devops', title: t('about.skills.devops'), icon: Zap, color: 'from-purple-500 to-pink-500' },
+        { key: 'tools', title: t('about.skills.tools'), icon: Target, color: 'from-orange-500 to-red-500' },
+      ]);
+
+      // Update profile data based on current language
+      setProfileData(getProfileData(i18n.language));
+    }
+  }, [t, i18n.language, isClient]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -54,12 +90,7 @@ export default function About() {
 
 
 
-  const skillCategories = [
-    { key: 'frontend', title: t('about.skills.frontend'), icon: Code, color: 'from-blue-500 to-cyan-500' },
-    { key: 'backend', title: t('about.skills.backend'), icon: Code, color: 'from-green-500 to-emerald-500' },
-    { key: 'devops', title: t('about.skills.devops'), icon: Zap, color: 'from-purple-500 to-pink-500' },
-    { key: 'tools', title: t('about.skills.tools'), icon: Target, color: 'from-orange-500 to-red-500' },
-  ];
+
 
   const cardVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -102,13 +133,13 @@ export default function About() {
             variants={itemVariants}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
           >
-            {t('about.title')}
+            {title}
           </motion.h2>
           <motion.p
             variants={itemVariants}
             className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
           >
-            {t('about.subtitle')}
+            {subtitle}
           </motion.p>
         </motion.div>
 
@@ -139,9 +170,9 @@ export default function About() {
                 </div>
               </div>
               
-                                            <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6 lg:mb-8">
-                 {profileData.personal.bio.replace(/'/g, '&apos;')}
-               </p>
+                                                           <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6 lg:mb-8">
+                  {t('about.bio')}
+                </p>
             </div>
 
             {/* Stats Grid */}
@@ -156,9 +187,9 @@ export default function About() {
                 <div className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-1">
                   {profileData.personal.yearsOfExperience}
                 </div>
-                <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400 font-medium">
-                  Years of Experience
-                </div>
+                                 <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400 font-medium">
+                   {t('experience.years')} of Experience
+                 </div>
               </motion.div>
 
               <motion.div
@@ -176,9 +207,9 @@ export default function About() {
                     suffix="+"
                   />
                 </div>
-                <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400 font-medium">
-                  Projects Completed
-                </div>
+                                 <div className="text-xs lg:text-sm text-gray-600 dark:text-gray-400 font-medium">
+                   {t('experience.projectsCompleted')}
+                 </div>
               </motion.div>
             </div>
           </motion.div>
@@ -193,7 +224,7 @@ export default function About() {
                 <Globe className="w-4 h-4 text-white" />
               </div>
               <h4 className="text-sm font-semibold text-gray-900 dark:text-white">
-                {t('about.languages.title')}
+                {languagesTitle}
               </h4>
             </div>
             <div className="space-y-1.5">
@@ -313,7 +344,7 @@ export default function About() {
                 <Award className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
               </div>
               <h3 className="text-lg lg:text-xl font-semibold text-gray-900 dark:text-white">
-                {t('about.skills.title')}
+                {skillsTitle}
               </h3>
             </div>
 

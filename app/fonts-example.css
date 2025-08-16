@@ -1,0 +1,86 @@
+/* Font Usage Examples */
+
+/* Using custom fonts with Tailwind classes */
+.custom-font {
+  font-family: 'CustomFont', Inter, system-ui, sans-serif;
+}
+
+.arabic-font {
+  font-family: 'GumelaArabic', Inter, system-ui, sans-serif;
+}
+
+/* RTL-specific font usage */
+[dir="rtl"] .arabic-text {
+  font-family: 'GumelaArabic', Inter, system-ui, sans-serif;
+}
+
+/* Global Arabic font application */
+[dir="rtl"] body {
+  font-family: 'GumelaArabic', Inter, system-ui, sans-serif;
+  font-size: 1.1em; /* Larger base font size for Arabic */
+}
+
+/* Ensure all text elements use Arabic font in RTL with larger sizes */
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6,
+[dir="rtl"] p, [dir="rtl"] span, [dir="rtl"] div, [dir="rtl"] button, [dir="rtl"] a, [dir="rtl"] li {
+  font-family: 'GumelaArabic', Inter, system-ui, sans-serif;
+}
+
+/* Larger font sizes for Arabic text */
+[dir="rtl"] h1 { font-size: 2.5rem !important; }
+[dir="rtl"] h2 { font-size: 2rem !important; }
+[dir="rtl"] h3 { font-size: 1.75rem !important; }
+[dir="rtl"] h4 { font-size: 1.5rem !important; }
+[dir="rtl"] h5 { font-size: 1.25rem !important; }
+[dir="rtl"] h6 { font-size: 1.125rem !important; }
+[dir="rtl"] p { font-size: 1.1rem !important; line-height: 1.8 !important; }
+[dir="rtl"] span { font-size: 1.05rem !important; }
+[dir="rtl"] button { font-size: 1.1rem !important; }
+[dir="rtl"] a { font-size: 1.05rem !important; }
+[dir="rtl"] li { font-size: 1.1rem !important; line-height: 1.8 !important; }
+
+/* Font weight variations */
+.font-light {
+  font-weight: 300;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+/* Font style variations */
+.font-italic {
+  font-style: italic;
+}
+
+/* Responsive font sizing */
+.text-responsive {
+  font-size: clamp(1rem, 2.5vw, 2rem);
+}
+
+/* Arabic responsive font sizing - larger */
+[dir="rtl"] .text-responsive {
+  font-size: clamp(1.1rem, 2.75vw, 2.2rem);
+}
+
+/* Font optimization */
+.font-optimized {
+  font-display: swap;
+  font-feature-settings: 'liga' 1, 'kern' 1;
+}

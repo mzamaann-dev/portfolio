@@ -1,0 +1,25 @@
+{
+  "name": "Portfolio - Full Stack Engineer",
+  "short_name": "Portfolio",
+  "description": "Professional portfolio showcasing full-stack development projects and skills",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "i18n": {
+    "lang": "en",
+    "dir": "ltr"
+  }
+}

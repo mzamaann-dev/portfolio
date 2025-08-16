@@ -1,0 +1,202 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "about": "عني",
+    "experience": "الخبرة",
+    "projects": "المشاريع",
+    "awards": "الجوائز",
+    "testimonials": "التوصيات",
+    "contact": "اتصل بي"
+  },
+  "hero": {
+    "greeting": "مرحباً، أنا",
+    "title": "مهندس متكامل كبير",
+    "subtitle": "أبني تطبيقات الويب الحديثة بشغف ودقة",
+    "cta": "شاهد أعمالي",
+    "scroll": "انتقل للاستكشاف",
+    "titles": {
+      "senior": "مهندس متكامل كبير",
+      "react": "مطور React",
+      "dotnet": "مهندس برمجيات كبير (.NET)",
+      "problem": "حلال المشاكل"
+    }
+  },
+  "about": {
+    "title": "عني",
+    "subtitle": "شغوف بإنشاء تجارب رقمية استثنائية",
+    "bio": "أنا مهندس متكامل شغوف ببناء تطبيقات قابلة للتطوير وسهلة الاستخدام. مع خبرة في تقنيات الويب الحديثة، أحب تحويل المشاكل المعقدة إلى حلول بسيطة وجميلة.",
+    "skills": {
+      "title": "المهارات والتقنيات",
+      "frontend": "واجهة المستخدم",
+      "backend": "الخلفية",
+      "devops": "العمليات",
+      "tools": "الأدوات"
+    },
+    "languages": {
+      "title": "اللغات",
+      "native": "أم",
+      "fluent": "متقن",
+      "intermediate": "متوسط",
+      "basic": "أساسي"
+    }
+  },
+  "education": {
+    "title": "التعليم",
+    "subtitle": "الخلفية الأكاديمية",
+    "gpa": "المعدل التراكمي",
+    "relevant_courses": "الدورات ذات الصلة"
+  },
+  "certifications": {
+    "title": "الشهادات",
+    "subtitle": "الشهادات المهنية",
+    "view": "عرض الشهادة"
+  },
+  "experience": {
+    "title": "الخبرة المهنية",
+    "subtitle": "رحلة من النمو والتطور المستمر",
+    "present": "الحالي",
+    "years": "سنوات",
+    "months": "أشهر",
+    "achievements": "الإنجازات الرئيسية",
+    "technologies": "التقنيات المستخدمة",
+    "projectsCompleted": "المشاريع المنجزة"
+  },
+  "projects": {
+    "title": "المشاريع",
+    "subtitle": "مجموعة من أفضل أعمالي المنجزة",
+    "featured": "مشاريع مميزة",
+    "all": "جميع المشاريع",
+    "filter": {
+      "all": "الكل",
+      "frontend": "واجهة المستخدم",
+      "backend": "الخلفية",
+      "fullstack": "متكامل",
+      "mobile": "الجوال",
+      "web": "الويب"
+    },
+    "view": {
+      "grid": "عرض الشبكة",
+      "list": "عرض القائمة"
+    },
+    "modal": {
+      "technologies": "التقنيات المستخدمة",
+      "features": "المميزات",
+      "challenges": "التحديات",
+      "solutions": "الحلول",
+      "results": "النتائج",
+      "liveDemo": "عرض مباشر",
+      "sourceCode": "الكود المصدري",
+      "close": "إغلاق"
+    },
+    "view_live": "عرض مباشر",
+    "view_code": "عرض الكود",
+    "view_details": "عرض التفاصيل",
+    "technologies": "التقنيات",
+    "features": "المميزات",
+    "duration": "المدة",
+    "team_size": "حجم الفريق",
+    "role": "الدور",
+    "architecture": "الهندسة المعمارية والتفاصيل التقنية",
+    "performance": "الأداء والتحسين",
+    "challenges": "التحديات التي واجهتها",
+    "solutions": "الحلول المطبقة",
+    "lessons_learned": "الدروس المستفادة",
+    "view_code_btn": "عرض الكود",
+    "live_demo_btn": "عرض مباشر"
+  },
+  "awards": {
+    "title": "الجوائز والشهادات",
+    "subtitle": "إنجازاتي وتطويري المستمر",
+    "stats": {
+      "certifications": "شهادات",
+      "awards": "جوائز",
+      "years": "سنوات خبرة"
+    },
+    "view": {
+      "showcase": "عرض المعرض",
+      "timeline": "الجدول الزمني"
+    },
+    "sort": {
+      "newest": "الأحدث",
+      "oldest": "الأقدم"
+    },
+    "modal": {
+      "issuedBy": "صادر من",
+      "issuedDate": "تاريخ الإصدار",
+      "expiryDate": "تاريخ الانتهاء",
+      "credentialId": "رقم الشهادة",
+      "viewCredential": "عرض الشهادة",
+      "close": "إغلاق"
+    },
+    "all": "الكل",
+    "awards": "الجوائز",
+    "achievements": "الإنجازات",
+    "certifications": "الشهادات",
+    "show_credential": "عرض الشهادة",
+    "view_certificate": "عرض الشهادة",
+    "view_details":"عرض التفاصيل"
+  },
+  "testimonials": {
+    "title": "التوصيات",
+    "subtitle": "ماذا يقول العملاء عن عملي",
+    "rating": "تقييم",
+    "stars": "نجوم",
+    "readMore": "اقرأ المزيد",
+    "readLess": "اقرأ أقل",
+    "read_more": "اقرأ المزيد",
+    "read_less": "اقرأ أقل",
+    "pause_autoplay": "إيقاف التشغيل التلقائي",
+    "start_autoplay": "بدء التشغيل التلقائي",
+    "auto_playing": "تشغيل تلقائي",
+    "paused": "متوقف"
+  },
+  "contact": {
+    "title": "اتصل بي",
+    "subtitle": "دعنا نعمل معاً على مشروعك القادم",
+    "message": "أنا دائماً منفتح لمناقشة الفرص الجديدة والمشاريع المثيرة للاهتمام أو مجرد التحدث عن التكنولوجيا. لا تتردد في التواصل!",
+    "social": "تواصل معي",
+    "stats": {
+      "responseTime": "وقت الاستجابة",
+      "successRate": "معدل النجاح",
+      "projectsDone": "المشاريع المنجزة"
+    },
+    "info": {
+      "email": "البريد الإلكتروني",
+      "location": "الموقع",
+      "availability": "التوفر",
+      "responseTime": "وقت الاستجابة"
+    },
+    "email": "البريد الإلكتروني",
+    "location": "الموقع"
+  },
+  "footer": {
+    "description": "مطور ويب متكامل شغوف بإنشاء تجارب رقمية استثنائية",
+    "quickLinks": "روابط سريعة",
+    "social": "وسائل التواصل",
+    "backToTop": "العودة للأعلى",
+    "copyright": "جميع الحقوق محفوظة",
+    "made_with": "صنع بـ",
+    "by": "بواسطة",
+    "rights": "جميع الحقوق محفوظة"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "retry": "إعادة المحاولة",
+    "close": "إغلاق",
+    "next": "التالي",
+    "previous": "السابق",
+    "view": "عرض",
+    "download": "تحميل",
+    "learnMore": "اعرف المزيد"
+  },
+  "theme": {
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام"
+  },
+  "language": {
+    "en": "English",
+    "ar": "العربية"
+  }
+}
