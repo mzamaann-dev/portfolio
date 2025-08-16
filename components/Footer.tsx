@@ -3,16 +3,23 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { Heart, Github, Linkedin, Globe, Mail, MapPin, ArrowUp, Clock, CheckCircle, MessageCircle } from 'lucide-react';
-import profileData from '@/data/profile.json';
+import { getProfileData } from '@/lib/profileData';
+import { useState, useEffect } from 'react';
 import '@/lib/i18n';
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [profileData, setProfileData] = useState(getProfileData('en'));
 
   // Parallax effects
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const springY = useSpring(y, { stiffness: 100, damping: 30 });
+
+  // Update profile data when language changes
+  useEffect(() => {
+    setProfileData(getProfileData(i18n.language));
+  }, [i18n.language]);
 
   const socialLinks = [
     { name: 'GitHub', url: profileData.personal.social.github, icon: Github, color: 'hover:bg-gray-900 hover:text-white' },
@@ -68,7 +75,7 @@ export default function Footer() {
                 </div>
               </div>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                {profileData.personal.bio}
+                {t('footer.description')}
               </p>
               
               {/* Contact Info */}

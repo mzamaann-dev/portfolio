@@ -3,15 +3,15 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 import en from '../locales/en.json';
+import ar from '../locales/ar.json';
 
 const resources = {
   en: {
     translation: en,
   },
-  // Future Arabic support
-  // ar: {
-  //   translation: ar,
-  // },
+  ar: {
+    translation: ar,
+  },
 };
 
 // Prevent server-side initialization

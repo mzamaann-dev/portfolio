@@ -1,11 +1,12 @@
 'use client';
 
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState, useMemo } from 'react';
+import { useRef, useState, useMemo, useEffect } from 'react';
 import { Github, ArrowRight, ChevronRight, Eye, Grid, Clock, Database, Code, Globe, Users, Zap, Star, Shield, Search, List, X, User, Award, BookOpen } from 'lucide-react';
-import profileData from '@/data/profile.json';
+import { getProfileData } from '@/lib/profileData';
 import '@/lib/i18n';
 
 interface Project {
@@ -30,8 +31,8 @@ interface Project {
 type ViewMode = 'featured' | 'all';
 type FilterType = 'all' | 'frontend' | 'backend' | 'fullstack' | 'mobile' | 'web';
 
-export default function Projects() {
-  const { t } = useTranslation();
+function Projects() {
+  const { t, i18n } = useTranslation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -39,8 +40,14 @@ export default function Projects() {
   const [filterType, setFilterType] = useState<FilterType>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [displayMode, setDisplayMode] = useState<'grid' | 'list'>('grid');
+  const [profileData, setProfileData] = useState(getProfileData('en'));
 
   const projects: Project[] = profileData.projects;
+
+  // Update profile data when language changes
+  useEffect(() => {
+    setProfileData(getProfileData(i18n.language));
+  }, [i18n.language]);
 
   // Featured projects (first 3-4 most impressive)
   const featuredProjects = projects.slice(0, 3);
@@ -750,3 +757,5 @@ export default function Projects() {
     </section>
   );
 }
+
+export default React.memo(Projects);

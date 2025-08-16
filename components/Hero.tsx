@@ -5,40 +5,36 @@ import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { Github, Linkedin, Globe, ChevronDown, Sparkles, FileCode, FileText, Terminal, Cloud, GitBranch, Settings, Layers, Palette, Smartphone, Monitor, ArrowRight, Box, Rocket, Star, Target } from 'lucide-react';
-import profileData from '@/data/profile.json';
+import { getProfileData } from '@/lib/profileData';
 import '@/lib/i18n';
 import Counter from '@/components/Counter';
 
 export default function Hero() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [displayName, setDisplayName] = useState('');
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [displayTitle, setDisplayTitle] = useState('');
   const [isTypingName, setIsTypingName] = useState(true);
   const [isTypingTitle, setIsTypingTitle] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isClient, setIsClient] = useState(false);
+  const [greeting, setGreeting] = useState('Hello, I\'m');
+  const [ctaText, setCtaText] = useState('View My Work');
+  const [socialText, setSocialText] = useState('Connect with me');
+  const [scrollText, setScrollText] = useState('Scroll to explore');
+  const [profileData, setProfileData] = useState(getProfileData('en'));
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll();
   const heroRef = useRef(null);
   const isInView = useInView(heroRef, { once: true, margin: "-100px" });
 
-  // Multiple titles for animation
-  const titles = [
+  // Multiple titles for animation - will be updated with translations
+  const [titles, setTitles] = useState([
     "Senior Full Stack Engineer",
     "React Developer",
     "Senior Software Engineer (.NET)",
     "Problem Solver"
-  ];
+  ]);
 
-  // Parallax effects
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -200]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -300]);
-
-  // Spring animations for smooth movement
-  const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
-  const springY2 = useSpring(y2, { stiffness: 100, damping: 30 });
-  const springY3 = useSpring(y3, { stiffness: 100, damping: 30 });
 
   // Animated typing effect for name
   useEffect(() => {
@@ -51,13 +47,13 @@ export default function Hero() {
         currentIndex++;
       } else {
         setIsTypingName(false);
-        setIsTypingTitle(true);
+        setIsTypingTitle(true);  
         clearInterval(typeInterval);
       }
     }, 150);
 
     return () => clearInterval(typeInterval);
-  }, []);
+  }, [profileData]);
 
   // Animated typing effect for titles
   useEffect(() => {
@@ -82,6 +78,32 @@ export default function Hero() {
 
     return () => clearInterval(typeInterval);
   }, [isTypingTitle, currentTitleIndex]);
+
+  // Client-side initialization
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Update translations and profile data after i18n is initialized
+  useEffect(() => {
+    if (isClient) {
+      setGreeting(t('hero.greeting'));
+      setCtaText(t('hero.cta'));
+      setSocialText(t('contact.social'));
+      setScrollText(t('hero.scroll'));
+      
+      // Update titles with translations
+      setTitles([
+        t('hero.titles.senior'),
+        t('hero.titles.react'),
+        t('hero.titles.dotnet'),
+        t('hero.titles.problem')
+      ]);
+
+      // Update profile data based on current language
+      setProfileData(getProfileData(i18n.language));
+    }
+  }, [t, i18n.language, isClient]);
 
   // Mouse tracking for interactive elements
   useEffect(() => {
@@ -245,11 +267,11 @@ export default function Hero() {
           {/* Greeting Badge */}
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center space-x-2 px-6 py-3 bg-white/80 dark:bg-dark-800/80 backdrop-blur-sm rounded-full border border-primary-200 dark:border-primary-800 shadow-lg"
+            className="inline-flex items-center space-x-2 rtl:space-x-reverse px-6 py-3 bg-white/80 dark:bg-dark-800/80 backdrop-blur-sm rounded-full border border-primary-200 dark:border-primary-800 shadow-lg"
           >
             <Sparkles className="w-5 h-5 text-primary-600 dark:text-primary-400" />
             <span className="text-primary-700 dark:text-primary-300 font-medium">
-              {t('hero.greeting')}
+              {greeting}
             </span>
           </motion.div>
 
@@ -271,16 +293,16 @@ export default function Hero() {
            {/* Stats Counters - Modern Design */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center justify-center gap-8 md:gap-12"
+              className="flex items-center justify-center gap-8 md:gap-12 rtl:gap-reverse"
             >
               {/* Years of Experience */}
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1">
                   {profileData.personal.yearsOfExperience}
                 </div>
-                <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-medium">
-                  Years of Experience
-                </div>
+                                 <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-medium">
+                   {t('experience.years')} of Experience
+                 </div>
               </div>
 
               {/* Separator */}
@@ -296,9 +318,9 @@ export default function Hero() {
                     suffix="+"
                   />
                 </div>
-                <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-medium">
-                  Projects Completed
-                </div>
+                                 <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-medium">
+                   {t('experience.projectsCompleted')}
+                 </div>
               </div>
             </motion.div>
 
@@ -336,22 +358,21 @@ export default function Hero() {
             variants={itemVariants}
             className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed font-medium"
           >
-            Crafting digital experiences with <span className="text-primary-600 dark:text-primary-400 font-semibold">modern web technologies</span>. 
-            Turning ideas into <span className="text-primary-600 dark:text-primary-400 font-semibold">scalable solutions</span> that users love.
+            {profileData.personal.punchyBio}
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 rtl:gap-reverse"
           >
             <motion.a
               href="#projects"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="group flex items-center space-x-3 px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-primary-600 to-blue-600 hover:from-primary-700 hover:to-blue-700 text-white rounded-xl font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group flex items-center space-x-3 rtl:space-x-reverse px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-primary-600 to-blue-600 hover:from-primary-700 hover:to-blue-700 text-white rounded-xl font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <span>{t('hero.cta')}</span>
+              <span>{ctaText}</span>
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </motion.a>
 
@@ -359,22 +380,22 @@ export default function Hero() {
               href="#contact"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="group flex items-center space-x-3 px-6 md:px-8 py-3 md:py-4 bg-white/80 dark:bg-dark-800/80 backdrop-blur-sm border-2 border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-xl font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group flex items-center space-x-3 rtl:space-x-reverse px-6 md:px-8 py-3 md:py-4 bg-white/80 dark:bg-dark-800/80 backdrop-blur-sm border-2 border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-xl font-semibold text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Target className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform duration-300" />
-              <span>Get In Touch</span>
+                             <span>{t('contact.title')}</span>
             </motion.a>
           </motion.div>
 
           {/* Social Links */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+            className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 rtl:sm:space-x-reverse"
           >
             <span className="text-gray-500 dark:text-gray-400 font-medium text-sm md:text-base">
-              {t('contact.social')}
+              {socialText}
             </span>
-            <div className="flex space-x-3 md:space-x-4">
+            <div className="flex space-x-3 md:space-x-4 rtl:space-x-reverse">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon;
                 return (
@@ -404,7 +425,7 @@ export default function Hero() {
       </div>
 
              {/* Scroll Indicator - Fixed positioning */}
-       <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center">
+       <div className="absolute bottom-8 inset-x-0 z-20 flex justify-center">
          <motion.div
            animate={{
              y: [0, 10, 0],
@@ -420,7 +441,7 @@ export default function Hero() {
              className="flex flex-col items-center space-y-2 text-gray-500 dark:text-gray-400 cursor-pointer"
              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
            >
-             <span className="text-sm font-medium">{t('hero.scroll')}</span>
+             <span className="text-sm font-medium">{scrollText}</span>
              <ChevronDown className="w-5 h-5 md:w-6 md:h-6 animate-bounce" />
            </motion.div>
          </motion.div>

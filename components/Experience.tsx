@@ -3,17 +3,18 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState, useMemo } from 'react';
+import { useRef, useState, useMemo, useEffect } from 'react';
 import { Award, Calendar, MapPin, ArrowRight, Briefcase, ChevronRight, ArrowUp, ArrowDown } from 'lucide-react';
-import profileData from '@/data/profile.json';
+import { getProfileData } from '@/lib/profileData';
 import '@/lib/i18n';
 
 export default function Experience() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const ref = useRef(null);
   const containerRef = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+  const [profileData, setProfileData] = useState(getProfileData('en'));
 
   // Parallax effects
   const { scrollYProgress } = useScroll({
@@ -28,6 +29,11 @@ export default function Experience() {
   const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
   const springY2 = useSpring(y2, { stiffness: 100, damping: 30 });
   const springY3 = useSpring(y3, { stiffness: 100, damping: 30 });
+
+  // Update profile data when language changes
+  useEffect(() => {
+    setProfileData(getProfileData(i18n.language));
+  }, [i18n.language]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -76,7 +82,7 @@ export default function Experience() {
   const sortedExperience = useMemo(() => {
     const experience = profileData.experience.map(exp => ({
       ...exp,
-      parsedDate: parseDate(exp.duration.split(' - ')[0] || exp.duration)
+      parsedDate: parseDate(exp.duration as string)
     }));
     
     return experience.sort((a, b) => {
@@ -86,7 +92,7 @@ export default function Experience() {
         return b.parsedDate.getTime() - a.parsedDate.getTime();
       }
     });
-  }, [sortOrder]);
+  }, [sortOrder, profileData.experience]);
 
   const toggleSortOrder = () => {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -174,9 +180,9 @@ export default function Experience() {
               
               return (
                 <motion.div
-                  key={exp.id}
+                  key={exp.company + exp.position}
                   variants={itemVariants}
-                  className={`flex items-center ${isEven ? 'flex-row' : 'flex-row-reverse'}`}
+                  className={`flex items-center ${isEven ? 'flex-row rtl:!flex-row' : 'flex-row-reverse rtl:!flex-row-reverse'}`}
                 >
                   {/* Timeline Dot */}
                   <div className="relative z-10">
@@ -186,7 +192,7 @@ export default function Experience() {
                   {/* Content Card */}
                   <motion.div
                     whileHover={{ y: -5, scale: 1.02 }}
-                    className={`flex-1 ${isEven ? 'ml-8' : 'mr-8'} max-w-lg`}
+                    className={`flex-1 ${isEven ? 'ml-8 rtl:mr-8 rtl:ml-0' : 'mr-8 rtl:ml-8 rtl:mr-0'} max-w-lg`}
                   >
                     <div className="bg-white/90 dark:bg-dark-800/90 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 dark:border-dark-700/50">
                       {/* Header */}
@@ -202,7 +208,7 @@ export default function Experience() {
                         <motion.div
                           whileHover={{ rotate: 360 }}
                           transition={{ duration: 0.6 }}
-                          className="p-2 bg-gradient-to-br from-primary-500 to-blue-600 rounded-lg ml-4 flex-shrink-0"
+                          className="p-2 bg-gradient-to-br from-primary-500 to-blue-600 rounded-lg ml-4 rtl:mr-4 rtl:ml-0 flex-shrink-0"
                         >
                           <Briefcase className="w-5 h-5 text-white" />
                         </motion.div>
@@ -212,14 +218,14 @@ export default function Experience() {
                       <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
                         <motion.div 
                           whileHover={{ scale: 1.05 }}
-                          className="flex items-center space-x-1"
+                          className="flex items-center space-x-1 rtl:space-x-reverse"
                         >
                           <Calendar className="w-4 h-4" />
                           <span className="font-medium">{exp.duration}</span>
                         </motion.div>
                         <motion.div 
                           whileHover={{ scale: 1.05 }}
-                          className="flex items-center space-x-1"
+                          className="flex items-center space-x-1 rtl:space-x-reverse"
                         >
                           <MapPin className="w-4 h-4" />
                           <span className="font-medium">{exp.location}</span>

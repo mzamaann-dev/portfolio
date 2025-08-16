@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion, useInView } from 'framer-motion';
 import { Star, Quote, ChevronLeft, ChevronRight, User, Pause, Play } from 'lucide-react';
-import profileData from '@/data/profile.json';
+import { getProfileData } from '@/lib/profileData';
 import '@/lib/i18n';
 import { useState, useRef, useEffect } from 'react';
 
@@ -20,14 +20,20 @@ interface Testimonial {
 }
 
 export default function Testimonials() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expandedTestimonial, setExpandedTestimonial] = useState<number | null>(null);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
+  const [profileData, setProfileData] = useState(getProfileData('en'));
   const containerRef = useRef(null);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  // Update profile data when language changes
+  useEffect(() => {
+    setProfileData(getProfileData(i18n.language));
+  }, [i18n.language]);
 
   const testimonials: Testimonial[] = profileData.testimonials;
 

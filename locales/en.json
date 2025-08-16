@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "Home",
     "about": "About",
     "experience": "Experience",
     "projects": "Projects",
@@ -12,7 +13,13 @@
     "title": "Senior Full Stack Engineer",
     "subtitle": "I build modern web applications with passion and precision",
     "cta": "View My Work",
-    "scroll": "Scroll to explore"
+    "scroll": "Scroll to explore",
+    "titles": {
+      "senior": "Senior Full Stack Engineer",
+      "react": "React Developer",
+      "dotnet": "Senior Software Engineer (.NET)",
+      "problem": "Problem Solver"
+    }
   },
   "about": {
     "title": "About Me",
@@ -34,11 +41,14 @@
     }
   },
   "experience": {
-    "title": "Experience",
-    "subtitle": "My professional journey",
+    "title": "Professional Experience",
+    "subtitle": "A journey of growth and continuous development",
     "present": "Present",
+    "years": "Years",
+    "months": "Months",
     "achievements": "Key Achievements",
-    "technologies": "Technologies Used"
+    "technologies": "Technologies Used",
+    "projectsCompleted": "Projects Completed"
   },
   "education": {
     "title": "Education",
@@ -53,7 +63,31 @@
   },
   "projects": {
     "title": "Projects",
-    "subtitle": "A showcase of my recent work and contributions",
+    "subtitle": "A collection of my best completed works",
+    "featured": "Featured Projects",
+    "all": "All Projects",
+    "filter": {
+      "all": "All",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "fullstack": "Full Stack",
+      "mobile": "Mobile",
+      "web": "Web"
+    },
+    "view": {
+      "grid": "Grid View",
+      "list": "List View"
+    },
+    "modal": {
+      "technologies": "Technologies Used",
+      "features": "Features",
+      "challenges": "Challenges",
+      "solutions": "Solutions",
+      "results": "Results",
+      "liveDemo": "Live Demo",
+      "sourceCode": "Source Code",
+      "close": "Close"
+    },
     "view_live": "View Live",
     "view_code": "View Code",
     "view_details": "View Details",
@@ -71,28 +105,63 @@
     "live_demo_btn": "Live Demo"
   },
   "contact": {
-    "title": "Get In Touch",
-    "subtitle": "Let's discuss your next project or opportunity",
+    "title": "Contact Me",
+    "subtitle": "Let's work together on your next project",
     "message": "I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology. Feel free to reach out!",
+    "social": "Connect with me",
+    "stats": {
+      "responseTime": "Response Time",
+      "successRate": "Success Rate",
+      "projectsDone": "Projects Done"
+    },
+    "info": {
+      "email": "Email",
+      "location": "Location",
+      "availability": "Availability",
+      "responseTime": "Response Time"
+    },
     "email": "Email",
-    "location": "Location",
-    "social": "Follow me on social media"
+    "location": "Location"
   },
   "awards": {
     "title": "Awards & Certifications",
-    "subtitle": "Recognition of my professional achievements, certifications, and contributions to the tech industry",
+    "subtitle": "My achievements and continuous development",
+    "stats": {
+      "certifications": "Certifications",
+      "awards": "Awards",
+      "years": "Years Experience"
+    },
+    "view": {
+      "showcase": "Showcase View",
+      "timeline": "Timeline View"
+    },
+    "sort": {
+      "newest": "Newest",
+      "oldest": "Oldest"
+    },
+    "modal": {
+      "issuedBy": "Issued By",
+      "issuedDate": "Issued Date",
+      "expiryDate": "Expiry Date",
+      "credentialId": "Credential ID",
+      "viewCredential": "View Credential",
+      "close": "Close"
+    },
     "all": "All",
     "awards": "Awards",
     "achievements": "Achievements",
     "certifications": "Certifications",
     "show_credential": "Show Credential",
-    "view_certificate": "View Certificate"
+    "view_certificate": "View Certificate",
+    "view_details" :"View Details"
   },
   "testimonials": {
-    "title": "Testimonials and Recommendations",
-    "subtitle": "What people say about working with me",
+    "title": "Testimonials",
+    "subtitle": "What clients say about my work",
     "rating": "Rating",
-    "project": "Project",
+    "stars": "Stars",
+    "readMore": "Read More",
+    "readLess": "Read Less",
     "read_more": "Read More",
     "read_less": "Read Less",
     "pause_autoplay": "Pause Auto-play",
@@ -101,6 +170,11 @@
     "paused": "Paused"
   },
   "footer": {
+    "description": "Full-stack web developer passionate about creating exceptional digital experiences",
+    "quickLinks": "Quick Links",
+    "social": "Social Media",
+    "backToTop": "Back to Top",
+    "copyright": "All rights reserved",
     "made_with": "Made with",
     "by": "by",
     "rights": "All rights reserved"
@@ -113,5 +187,16 @@
   "language": {
     "en": "English",
     "ar": "العربية"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "close": "Close",
+    "next": "Next",
+    "previous": "Previous",
+    "view": "View",
+    "download": "Download",
+    "learnMore": "Learn More"
   }
 }
