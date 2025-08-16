@@ -12,7 +12,7 @@ export default function Footer() {
   const socialLinks = [
     { name: 'GitHub', url: profileData.personal.social.github, icon: Github },
     { name: 'LinkedIn', url: profileData.personal.social.linkedin, icon: Linkedin },
-    { name: 'Twitter', url: profileData.personal.social.twitter, icon: Twitter },
+    { name: 'Portfolio', url: profileData.personal.social.portfolio, icon: Linkedin },
   ];
 
   return (

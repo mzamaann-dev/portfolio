@@ -5,8 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/portfolio' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/portfolio/' : '',
+  // Remove hardcoded basePath and assetPrefix - they should be set via environment variables
+  // or dynamically based on the repository name
 }
 
 module.exports = nextConfig
