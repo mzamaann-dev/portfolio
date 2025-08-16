@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState, useMemo } from 'react';
-import { ExternalLink, Github, Calendar, Users, Code, Globe, X, ArrowRight, Award, Zap, Shield, Database, Server, BookOpen, ChevronRight, Star, Clock, User, Search, Filter, Grid, List, Eye } from 'lucide-react';
+import { Github, ArrowRight, ChevronRight, Eye, Grid, Clock, Database, Code, Globe, Users, Zap, Star, Shield, Search, List, X, User, Award, BookOpen } from 'lucide-react';
 import profileData from '@/data/profile.json';
 import '@/lib/i18n';
 
@@ -182,7 +182,7 @@ export default function Projects() {
   const getTechnologyIcon = (tech: string) => {
     const techLower = tech.toLowerCase();
     if (techLower.includes('react')) return <Code className="w-4 h-4" />;
-    if (techLower.includes('node')) return <Server className="w-4 h-4" />;
+    if (techLower.includes('node')) return <Database className="w-4 h-4" />;
     if (techLower.includes('python')) return <Database className="w-4 h-4" />;
     if (techLower.includes('c#')) return <Shield className="w-4 h-4" />;
     if (techLower.includes('javascript')) return <Code className="w-4 h-4" />;

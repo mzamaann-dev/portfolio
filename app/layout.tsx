@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ErrorBoundary from '@/components/ErrorBoundary';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -40,15 +41,20 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider>
-          <div className="min-h-screen bg-white dark:bg-dark-900">
-            <Header />
-            <main>
-              {children}
-            </main>
-            <Footer />
-          </div>
-        </ThemeProvider>
+        <ErrorBoundary>
+          <ThemeProvider>
+            <a href="#main-content" className="skip-link">
+              Skip to main content
+            </a>
+            <div className="min-h-screen bg-white dark:bg-dark-900">
+              <Header />
+              <main id="main-content">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { User, Code, Globe, Award, Star, ChevronRight, TrendingUp, Users, Zap, Target, Heart, Sparkles } from 'lucide-react';
+import { User, Code, Globe, Award, Star, TrendingUp, Users, Zap, Target, Heart, Sparkles } from 'lucide-react';
 import profileData from '@/data/profile.json';
 import Counter from '@/components/Counter';
 import '@/lib/i18n';
@@ -52,17 +52,7 @@ export default function About() {
     },
   };
 
-  const skillVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut',
-      },
-    },
-  };
+
 
   const skillCategories = [
     { key: 'frontend', title: t('about.skills.frontend'), icon: Code, color: 'from-blue-500 to-cyan-500' },
@@ -149,9 +139,9 @@ export default function About() {
                 </div>
               </div>
               
-              <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6 lg:mb-8">
-                {profileData.personal.bio}
-              </p>
+                                            <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6 lg:mb-8">
+                 {profileData.personal.bio.replace(/'/g, '&apos;')}
+               </p>
             </div>
 
             {/* Stats Grid */}

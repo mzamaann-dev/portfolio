@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState, useMemo } from 'react';
-import { Trophy, Users, Award, Database, Code, FileText, ArrowRight, ExternalLink, Star, Calendar, Target, Zap, ChevronRight, X, ArrowUpDown, ArrowUp, ArrowDown } from 'lucide-react';
+import { Award, Calendar, ArrowRight, ChevronRight, ArrowUp, ArrowDown, Database, Code, Users, Trophy, FileText, X, ExternalLink } from 'lucide-react';
 import profileData from '@/data/profile.json';
 import '@/lib/i18n';
 import React from 'react';
@@ -15,7 +15,7 @@ export default function Awards() {
   const containerRef = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeFilter, setActiveFilter] = useState('all');
-  const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [selectedItem, setSelectedItem] = useState<typeof profileData.awards[0] | typeof profileData.certifications[0] | null>(null);
   const [viewMode, setViewMode] = useState<'showcase' | 'timeline'>('showcase');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
@@ -655,7 +655,7 @@ export default function Awards() {
                   </div>
                 )}
 
-                {selectedItem.url && (
+                {'url' in selectedItem && selectedItem.url && (
                   <div className="pt-6 border-t border-gray-200 dark:border-dark-700">
                     <a
                       href={selectedItem.url}

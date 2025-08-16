@@ -1,12 +1,13 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
-import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
-import { ChevronDown, ArrowRight, Github, Linkedin, Code, Database, Server, Globe, Zap, Shield, Cpu, Sparkles, Star, Rocket, Target, FileCode, FileText, Terminal, Cloud, GitBranch, Settings, Palette, Smartphone, Monitor, Layers, Box } from 'lucide-react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { Github, Linkedin, Globe, ChevronDown, Sparkles, FileCode, FileText, Terminal, Cloud, GitBranch, Settings, Layers, Palette, Smartphone, Monitor, ArrowRight, Box, Rocket, Star, Target } from 'lucide-react';
 import profileData from '@/data/profile.json';
-import Counter from '@/components/Counter';
 import '@/lib/i18n';
-import { useState, useEffect, useRef } from 'react';
+import Counter from '@/components/Counter';
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -288,8 +289,8 @@ export default function Hero() {
               {/* Projects Counter */}
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1">
-                  <Counter 
-                    end={profileData.personal.numberOfProjects} 
+                                    <Counter
+                    end={parseInt(profileData.personal.numberOfProjects)}
                     duration={1.5}
                     className="font-bold"
                     suffix="+"

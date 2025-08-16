@@ -222,7 +222,7 @@ export default function Contact() {
                 Ready to collaborate?
               </h3>
               <p className="text-primary-100 mb-6">
-                Let's discuss your next project and bring your ideas to life.
+                                 Let&apos;s discuss your next project and bring your ideas to life.
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}

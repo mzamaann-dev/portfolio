@@ -22,7 +22,7 @@ const themes = [
 
 export default function Header() {
   const { t, i18n } = useTranslation();
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
@@ -66,8 +66,7 @@ export default function Header() {
     }
   };
 
-  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
-  const currentTheme = themes.find(t => t.value === theme) || themes[2];
+
 
   return (
     <motion.header

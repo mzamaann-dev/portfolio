@@ -209,7 +209,7 @@ export default function Testimonials() {
                     : 'line-clamp-4'
                 }`}
               >
-                "{testimonials[currentIndex].content}"
+                &ldquo;{testimonials[currentIndex].content}&rdquo;
               </motion.p>
               
               {testimonials[currentIndex].content.length > 200 && (
@@ -307,7 +307,7 @@ export default function Testimonials() {
           animate={isInView ? "visible" : "hidden"}
           className="hidden lg:grid lg:grid-cols-3 gap-6 mt-16"
         >
-          {testimonials.slice(0, 3).map((testimonial, index) => (
+          {testimonials.slice(0, 3).map((testimonial) => (
             <motion.div
               key={testimonial.id}
               variants={itemVariants}
@@ -332,7 +332,7 @@ export default function Testimonials() {
               </div>
 
               <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-4 line-clamp-4">
-                "{testimonial.content}"
+                &ldquo;{testimonial.content}&rdquo;
               </p>
 
               <div className="flex items-center space-x-3">
