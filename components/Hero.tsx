@@ -1,11 +1,13 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
-import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
-import { ChevronDown, ArrowRight, Github, Linkedin, Code, Database, Server, Globe, Zap, Shield, Cpu, Sparkles, Star, Rocket, Target, FileCode, FileText, Terminal, Cloud, GitBranch, Settings, Palette, Smartphone, Monitor, Layers, Box } from 'lucide-react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { Github, Linkedin, Globe, ChevronDown, Sparkles, FileCode, FileText, Terminal, Cloud, GitBranch, Settings, Layers, Palette, Smartphone, Monitor, ArrowRight, Box, Rocket, Star, Target } from 'lucide-react';
 import profileData from '@/data/profile.json';
 import '@/lib/i18n';
-import { useState, useEffect, useRef } from 'react';
+import Counter from '@/components/Counter';
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -266,34 +268,68 @@ export default function Hero() {
               </span>
            </motion.h1>
 
-           {/* Animated Title */}
-           <motion.div
-             variants={itemVariants}
-             className="relative min-h-[2rem] md:min-h-[3rem] lg:min-h-[4rem] xl:min-h-[5rem] flex items-center justify-center"
-           >
-             <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-primary-600 via-blue-600 to-indigo-600 dark:from-primary-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                               <span className="inline-flex items-center">
-                  {displayTitle}
-                  <motion.span
-                    className="inline-block w-1 bg-primary-600 dark:bg-primary-400 ml-2 cursor-height"
-                    animate={{ opacity: [1, 0, 1] }}
-                    transition={{ duration: 1, repeat: Infinity }}
-                  />
-                </span>
-             </h2>
+           {/* Stats Counters - Modern Design */}
             <motion.div
-              className="absolute -inset-1 bg-gradient-to-r from-primary-600/20 via-blue-600/20 to-indigo-600/20 blur-xl"
-              animate={{
-                opacity: [0.5, 1, 0.5],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </motion.div>
+              variants={itemVariants}
+              className="flex items-center justify-center gap-8 md:gap-12"
+            >
+              {/* Years of Experience */}
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1">
+                  {profileData.personal.yearsOfExperience}
+                </div>
+                <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-medium">
+                  Years of Experience
+                </div>
+              </div>
+
+              {/* Separator */}
+              <div className="w-px h-12 bg-gray-300 dark:bg-gray-600"></div>
+
+              {/* Projects Counter */}
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1">
+                                    <Counter
+                    end={parseInt(profileData.personal.numberOfProjects)}
+                    duration={1.5}
+                    className="font-bold"
+                    suffix="+"
+                  />
+                </div>
+                <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-medium">
+                  Projects Completed
+                </div>
+              </div>
+            </motion.div>
+
+          {/* Animated Title */}
+          <motion.div
+            variants={itemVariants}
+            className="relative min-h-[2rem] md:min-h-[3rem] lg:min-h-[4rem] xl:min-h-[5rem] flex items-center justify-center"
+          >
+            <h2 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-primary-600 via-blue-600 to-indigo-600 dark:from-primary-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+                              <span className="inline-flex items-center">
+                {displayTitle}
+                <motion.span
+                  className="inline-block w-1 bg-primary-600 dark:bg-primary-400 ml-2 cursor-height"
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                />
+              </span>
+            </h2>
+           <motion.div
+             className="absolute -inset-1 bg-gradient-to-r from-primary-600/20 via-blue-600/20 to-indigo-600/20 blur-xl"
+             animate={{
+               opacity: [0.5, 1, 0.5],
+               scale: [1, 1.1, 1],
+             }}
+             transition={{
+               duration: 3,
+               repeat: Infinity,
+               ease: "easeInOut",
+             }}
+           />
+         </motion.div>
 
           {/* Punchy Bio */}
           <motion.p

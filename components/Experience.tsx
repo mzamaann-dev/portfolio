@@ -1,55 +1,48 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Award, Calendar, MapPin, ArrowRight, Briefcase } from 'lucide-react';
+import { useRef, useState, useMemo } from 'react';
+import { Award, Calendar, MapPin, ArrowRight, Briefcase, ChevronRight, ArrowUp, ArrowDown } from 'lucide-react';
 import profileData from '@/data/profile.json';
 import '@/lib/i18n';
 
 export default function Experience() {
   const { t } = useTranslation();
   const ref = useRef(null);
+  const containerRef = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+
+  // Parallax effects
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+
+  const springY1 = useSpring(y1, { stiffness: 100, damping: 30 });
+  const springY2 = useSpring(y2, { stiffness: 100, damping: 30 });
+  const springY3 = useSpring(y3, { stiffness: 100, damping: 30 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -50 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.8,
-        ease: 'easeOut',
-      },
-    },
-  };
-
-  const timelineVariants = {
-    hidden: { scaleY: 0 },
-    visible: {
-      scaleY: 1,
-      transition: {
-        duration: 1.2,
-        ease: 'easeOut',
-      },
-    },
-  };
-
-  const dotVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
+      y: 0,
       opacity: 1,
       transition: {
         duration: 0.6,
@@ -58,14 +51,67 @@ export default function Experience() {
     },
   };
 
+  // Parse date string to Date object
+  const parseDate = (dateString: string): Date => {
+    // Handle various date formats
+    const date = new Date(dateString);
+    if (!isNaN(date.getTime())) {
+      return date;
+    }
+    
+    // Handle "Month Year" format (e.g., "January 2024")
+    const monthYearMatch = dateString.match(/(\w+)\s+(\d{4})/);
+    if (monthYearMatch) {
+      const month = monthYearMatch[1];
+      const year = parseInt(monthYearMatch[2]);
+      const monthIndex = new Date(`${month} 1, ${year}`).getMonth();
+      return new Date(year, monthIndex, 1);
+    }
+    
+    // Fallback to current date if parsing fails
+    return new Date();
+  };
+
+  // Sort experience by date
+  const sortedExperience = useMemo(() => {
+    const experience = profileData.experience.map(exp => ({
+      ...exp,
+      parsedDate: parseDate(exp.duration.split(' - ')[0] || exp.duration)
+    }));
+    
+    return experience.sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.parsedDate.getTime() - b.parsedDate.getTime();
+      } else {
+        return b.parsedDate.getTime() - a.parsedDate.getTime();
+      }
+    });
+  }, [sortOrder]);
+
+  const toggleSortOrder = () => {
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+  };
+
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-dark-800 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_1px_1px,rgba(14,165,233,0.1)_1px,transparent_0)] bg-[length:40px_40px]" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section ref={containerRef} id="experience" className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 relative overflow-hidden">
+      {/* Parallax Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          ref={ref}
+          style={{ y: springY1 }}
+          className="absolute top-20 left-10 w-32 h-32 bg-primary-400/10 dark:bg-primary-500/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          style={{ y: springY2 }}
+          className="absolute top-40 right-20 w-40 h-40 bg-blue-400/10 dark:bg-blue-500/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          style={{ y: springY3 }}
+          className="absolute bottom-20 left-1/3 w-36 h-36 bg-indigo-400/10 dark:bg-indigo-500/10 rounded-full blur-3xl"
+        />
+      </div>
+
+      <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -85,136 +131,169 @@ export default function Experience() {
           </motion.p>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline Line - Hidden on mobile, visible on desktop */}
-          <motion.div
-            variants={timelineVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-primary-400 via-primary-500 to-primary-600 h-full rounded-full shadow-lg"
-          />
-
-          {/* Work Experience Timeline */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="space-y-8 lg:space-y-16"
+        {/* Sort Order Toggle */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="flex justify-center mb-12"
+        >
+          <motion.button
+            onClick={toggleSortOrder}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center space-x-2 px-6 py-3 bg-white/80 dark:bg-dark-800/80 backdrop-blur-sm rounded-xl border border-white/20 dark:border-dark-700/50 shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            {profileData.experience.map((exp, index) => (
-              <motion.div
-                key={exp.id}
-                variants={itemVariants}
-                className={`relative flex items-center ${
-                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } flex-col`}
-              >
-                {/* Timeline Dot - Mobile: top, Desktop: center */}
+            {sortOrder === 'asc' ? (
+              <>
+                <ArrowUp className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+                <span className="font-medium text-gray-700 dark:text-gray-300">Oldest First</span>
+              </>
+            ) : (
+              <>
+                <ArrowDown className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+                <span className="font-medium text-gray-700 dark:text-gray-300">Newest First</span>
+              </>
+            )}
+          </motion.button>
+        </motion.div>
+
+        {/* Timeline View */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="relative"
+        >
+          {/* Timeline Line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary-500 to-blue-600 rounded-full"></div>
+          
+          <div className="space-y-12">
+            {sortedExperience.map((exp, index) => {
+              const isEven = index % 2 === 0;
+              
+              return (
                 <motion.div
-                  variants={dotVariants}
-                  className="lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:z-10 mb-6 lg:mb-0"
+                  key={exp.id}
+                  variants={itemVariants}
+                  className={`flex items-center ${isEven ? 'flex-row' : 'flex-row-reverse'}`}
                 >
-                  <div className="w-6 h-6 bg-primary-600 dark:bg-primary-400 rounded-full border-4 border-white dark:border-dark-800 shadow-lg" />
-                  <div className="absolute inset-0 w-6 h-6 bg-primary-400 rounded-full animate-ping opacity-20" />
-                </motion.div>
-
-                {/* Content Card */}
-                <motion.div
-                  whileHover={{ 
-                    y: -5, 
-                    scale: 1.02
-                  }}
-                  className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-8' : 'lg:pl-8'}`}
-                >
-                  <div className="bg-white dark:bg-dark-700 rounded-xl p-6 shadow-lg hover:shadow-2xl border border-gray-200 dark:border-dark-600 hover:border-primary-400 dark:hover:border-primary-500 transition-all duration-300">
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1">
-                        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                          {exp.position}
-                        </h4>
-                        <h5 className="text-lg font-semibold text-primary-600 dark:text-primary-400 mb-3">
-                          {exp.company}
-                        </h5>
-                      </div>
-                      <motion.div
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.6 }}
-                        className="p-2 bg-primary-100 dark:bg-primary-900/30 rounded-lg ml-4 flex-shrink-0"
-                      >
-                        <Briefcase className="w-5 h-5 text-primary-600 dark:text-primary-400" />
-                      </motion.div>
-                    </div>
-
-                    {/* Meta Info */}
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
-                      <motion.div 
-                        whileHover={{ scale: 1.05 }}
-                        className="flex items-center space-x-1"
-                      >
-                        <Calendar className="w-4 h-4" />
-                        <span className="font-medium">{exp.duration}</span>
-                      </motion.div>
-                      <motion.div 
-                        whileHover={{ scale: 1.05 }}
-                        className="flex items-center space-x-1"
-                      >
-                        <MapPin className="w-4 h-4" />
-                        <span className="font-medium">{exp.location}</span>
-                      </motion.div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-gray-700 dark:text-gray-200 mb-6 leading-relaxed">
-                      {exp.description}
-                    </p>
-                    
-                    {/* Technologies */}
-                    <div className="mb-6">
-                      <h6 className="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center">
-                        <ArrowRight className="w-4 h-4 mr-2 text-primary-600 dark:text-primary-400" />
-                        {t('experience.technologies')}:
-                      </h6>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech) => (
-                          <motion.span
-                            key={tech}
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            className="px-3 py-1.5 bg-primary-50 dark:bg-primary-900/30 text-primary-800 dark:text-primary-200 rounded-full text-sm font-semibold border border-primary-200 dark:border-primary-800"
-                          >
-                            {tech}
-                          </motion.span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Achievements */}
-                    <div>
-                      <h6 className="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center">
-                        <Award className="w-4 h-4 mr-2 text-primary-600 dark:text-primary-400" />
-                        {t('experience.achievements')}:
-                      </h6>
-                      <ul className="space-y-2">
-                        {exp.achievements.map((achievement, idx) => (
-                          <motion.li
-                            key={idx}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="text-sm text-gray-700 dark:text-gray-200 flex items-start"
-                          >
-                            <span className="w-1.5 h-1.5 bg-primary-600 dark:bg-primary-400 rounded-full mt-2 mr-3 flex-shrink-0" />
-                            {achievement}
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
+                  {/* Timeline Dot */}
+                  <div className="relative z-10">
+                    <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-blue-600 rounded-full shadow-lg border-4 border-white dark:border-dark-900"></div>
                   </div>
+
+                  {/* Content Card */}
+                  <motion.div
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    className={`flex-1 ${isEven ? 'ml-8' : 'mr-8'} max-w-lg`}
+                  >
+                    <div className="bg-white/90 dark:bg-dark-800/90 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 dark:border-dark-700/50">
+                      {/* Header */}
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex-1">
+                          <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                            {exp.position}
+                          </h4>
+                          <h5 className="text-lg font-semibold text-primary-600 dark:text-primary-400 mb-3">
+                            {exp.company}
+                          </h5>
+                        </div>
+                        <motion.div
+                          whileHover={{ rotate: 360 }}
+                          transition={{ duration: 0.6 }}
+                          className="p-2 bg-gradient-to-br from-primary-500 to-blue-600 rounded-lg ml-4 flex-shrink-0"
+                        >
+                          <Briefcase className="w-5 h-5 text-white" />
+                        </motion.div>
+                      </div>
+
+                      {/* Meta Info */}
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <motion.div 
+                          whileHover={{ scale: 1.05 }}
+                          className="flex items-center space-x-1"
+                        >
+                          <Calendar className="w-4 h-4" />
+                          <span className="font-medium">{exp.duration}</span>
+                        </motion.div>
+                        <motion.div 
+                          whileHover={{ scale: 1.05 }}
+                          className="flex items-center space-x-1"
+                        >
+                          <MapPin className="w-4 h-4" />
+                          <span className="font-medium">{exp.location}</span>
+                        </motion.div>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-gray-700 dark:text-gray-200 mb-6 leading-relaxed text-sm">
+                        {exp.description}
+                      </p>
+                      
+                      {/* Technologies */}
+                      <div className="mb-6">
+                        <h6 className="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center">
+                          <ArrowRight className="w-4 h-4 mr-2 text-primary-600 dark:text-primary-400" />
+                          {t('experience.technologies')}:
+                        </h6>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.technologies.slice(0, 4).map((tech) => (
+                            <motion.span
+                              key={tech}
+                              whileHover={{ scale: 1.05, y: -2 }}
+                              className="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-800 dark:text-primary-200 rounded-full text-xs font-semibold border border-primary-200 dark:border-primary-800"
+                            >
+                              {tech}
+                            </motion.span>
+                          ))}
+                          {exp.technologies.length > 4 && (
+                            <span className="px-2 py-1 bg-gray-100 dark:bg-dark-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-semibold border border-gray-300 dark:border-dark-600">
+                              +{exp.technologies.length - 4}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Achievements */}
+                      <div>
+                        <h6 className="text-sm font-bold text-gray-900 dark:text-white mb-3 flex items-center">
+                          <Award className="w-4 h-4 mr-2 text-primary-600 dark:text-primary-400" />
+                          {t('experience.achievements')}:
+                        </h6>
+                        <ul className="space-y-2">
+                          {exp.achievements.slice(0, 3).map((achievement, idx) => (
+                            <motion.li
+                              key={idx}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: idx * 0.1 }}
+                              className="text-sm text-gray-700 dark:text-gray-200 flex items-start"
+                            >
+                              <span className="w-1.5 h-1.5 bg-primary-600 dark:bg-primary-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                              {achievement}
+                            </motion.li>
+                          ))}
+                          {exp.achievements.length > 3 && (
+                            <motion.li
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: 0.3 }}
+                              className="text-sm text-gray-500 dark:text-gray-400 flex items-center"
+                            >
+                              <ChevronRight className="w-4 h-4 mr-2" />
+                              +{exp.achievements.length - 3} more achievements
+                            </motion.li>
+                          )}
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+              );
+            })}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

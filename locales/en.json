@@ -1,9 +1,7 @@
 {
   "nav": {
-    "home": "Home",
     "about": "About",
     "experience": "Experience",
-    "education": "Education",
     "projects": "Projects",
     "awards": "Awards",
     "testimonials": "Testimonials",
@@ -96,7 +94,11 @@
     "rating": "Rating",
     "project": "Project",
     "read_more": "Read More",
-    "read_less": "Read Less"
+    "read_less": "Read Less",
+    "pause_autoplay": "Pause Auto-play",
+    "start_autoplay": "Start Auto-play",
+    "auto_playing": "Auto-playing",
+    "paused": "Paused"
   },
   "footer": {
     "made_with": "Made with",
