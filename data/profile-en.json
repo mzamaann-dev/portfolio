@@ -84,7 +84,7 @@
       "achievements": [
         "Contributed to the migration of a legacy system (WinForm) to a modern (WPF), assisting in enhancing the UI/UX layer through imporved layouts and interactions. This effort contributed to a increase in customer adoption, as user embraced the more modern and interactive interface.",
         "Lead the successful delivery of  HRMS covering all the planned modules and integrations, Adopted agile, participating in daily standups, sprint planning, and retrospectives for iterative and transparent communication.",
-        "Participated in the hackathon organized by the company, where we developed a web application using React, Node.js, and cloud technologies."
+        "Participated in a company-organized hackathon, where we built a web application using React, Node.js, and cloud technologies. The project featured AI-powered chatbots, dynamic form handling on the frontend, and real-time chat functionality with streaming support via WebSockets, delivering a smooth and interactive user experience."
       ]
     },
     {
@@ -107,9 +107,12 @@
         "Redis"
       ],
       "achievements": [
-        "Developed MVP that secured $2M in funding",
-        "Improved user engagement by 35% through UI/UX enhancements",
-        "Reduced bug reports by 50% through testing implementation"
+        "Built two enterprise-grade Blazor WebAssembly applications by leveraging Telerik UI components for dynamic front-end development, resulting in modern, responsive UIs for US-based clients on large-scale projects.",
+        "Gained hands-on expertise in Blazor and Telerik UI while contributing to full project lifecycles, significantly accelerating personal growth in modern Microsoft front-end technologies.",
+        "Optimized data retrieval in a financial software system (QuickBooks-like) by writing complex SQL Server queries using CTEs, PIVOT, and advanced joins, which improved reporting speed and data accuracy.",
+        "Improved backend performance by refactoring controller and repository layers to use asynchronous methods, resulting in better app responsiveness and resource efficiency.",
+        "Implemented custom two-factor authentication (2FA) using Duo and Microsoft Authenticator by designing secure authentication flows, enhancing user account protection in a finance-critical environment.",
+        "Developed a robust authentication and authorization module with role- and permission-based access control, ensuring data security and compliance for financial operations."
       ]
     },
     {
@@ -201,7 +204,14 @@
       "url": "https://www.udemy.com/certificate/UC-7fa6f07a-378c-40db-a2e8-e9b62abce01a/",
       "description": "This certificate recognizes the successful completion of an advanced training program in Modern Web Application Development. The course focused on building dynamic, responsive web apps using cutting-edge technologies including React, TypeScript, Redux, and TailwindCSS. Learners developed job-ready programming skills through hands-on projects, mastering key concepts such as client-side routing with React Router, robust form handling, API integration, state management with Redux Toolkit and Immer, and efficient data display techniques. The program prepares participants for roles in software engineering by emphasizing real-world application and performance optimization.",
       "type": "certification",
-      "tags": ["react", "redux", "javascript", "udemy", "typescript", "tailwindcss"],
+      "tags": [
+        "react",
+        "redux",
+        "javascript",
+        "udemy",
+        "typescript",
+        "tailwindcss"
+      ],
       "icon": "code"
     },
     {

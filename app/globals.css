@@ -321,6 +321,44 @@
   .card-hover {
     @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
   }
+
+  /* Scrollbar component classes */
+  .scrollbar-modern {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(2, 132, 199, 0.2) transparent;
+  }
+
+  .scrollbar-modern::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar-modern::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  .scrollbar-modern::-webkit-scrollbar-thumb {
+    background: rgba(2, 132, 199, 0.2);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .scrollbar-modern::-webkit-scrollbar-thumb:hover {
+    background: rgba(2, 132, 199, 0.4);
+  }
+
+  .dark .scrollbar-modern {
+    scrollbar-color: rgba(14, 165, 233, 0.3) transparent;
+  }
+
+  .dark .scrollbar-modern::-webkit-scrollbar-thumb {
+    background: rgba(14, 165, 233, 0.3);
+  }
+
+  .dark .scrollbar-modern::-webkit-scrollbar-thumb:hover {
+    background: rgba(14, 165, 233, 0.5);
+  }
 }
 
 @layer utilities {
@@ -335,6 +373,126 @@
   
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Custom Scrollbar Styles */
+  /* Webkit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(2, 132, 199, 0.2);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(2, 132, 199, 0.4);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Dark mode scrollbar */
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(14, 165, 233, 0.3);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(14, 165, 233, 0.5);
+  }
+
+  /* Primary color scrollbar variant */
+  .scrollbar-primary::-webkit-scrollbar-thumb {
+    background: rgba(2, 132, 199, 0.4);
+  }
+
+  .scrollbar-primary::-webkit-scrollbar-thumb:hover {
+    background: rgba(2, 132, 199, 0.6);
+  }
+
+  /* Thin scrollbar variant */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  /* Thick scrollbar variant */
+  .scrollbar-thick::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Rounded scrollbar variant */
+  .scrollbar-rounded::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+  }
+
+  /* Gradient scrollbar variant */
+  .scrollbar-gradient::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.4), rgba(14, 165, 233, 0.4));
+  }
+
+  .scrollbar-gradient::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.6), rgba(14, 165, 233, 0.6));
+  }
+
+  /* Accent color scrollbar variant */
+  .scrollbar-accent::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.3);
+  }
+
+  .scrollbar-accent::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.5);
+  }
+
+  /* Success color scrollbar variant */
+  .scrollbar-success::-webkit-scrollbar-thumb {
+    background: rgba(34, 197, 94, 0.3);
+  }
+
+  .scrollbar-success::-webkit-scrollbar-thumb:hover {
+    background: rgba(34, 197, 94, 0.5);
+  }
+
+  /* Warning color scrollbar variant */
+  .scrollbar-warning::-webkit-scrollbar-thumb {
+    background: rgba(245, 158, 11, 0.3);
+  }
+
+  .scrollbar-warning::-webkit-scrollbar-thumb:hover {
+    background: rgba(245, 158, 11, 0.5);
+  }
+
+  /* Error color scrollbar variant */
+  .scrollbar-error::-webkit-scrollbar-thumb {
+    background: rgba(239, 68, 68, 0.3);
+  }
+
+  .scrollbar-error::-webkit-scrollbar-thumb:hover {
+    background: rgba(239, 68, 68, 0.5);
+  }
+
+  /* Firefox scrollbar styles */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(2, 132, 199, 0.2) transparent;
+  }
+
+  .dark * {
+    scrollbar-color: rgba(14, 165, 233, 0.3) transparent;
+  }
+
+  .scrollbar-primary * {
+    scrollbar-color: rgba(2, 132, 199, 0.4) transparent;
   }
   
   .cursor-height {
