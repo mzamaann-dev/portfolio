@@ -1,10 +1,8 @@
 /* Custom Font Definitions */
 
-
-
-
-
 /* Arabic Font - Gumela */
+/* Fonts are now loaded dynamically via FontLoader component */
+/*
 @font-face {
   font-family: 'GumelaArabic';
   src: url('/fonts/gumela-arabic-regular.otf') format('opentype');
@@ -31,5 +29,6 @@
   font-display: swap;
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
 }
+*/
 
 /* You can add more font variations here */
