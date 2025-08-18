@@ -9,11 +9,12 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 import PWAProvider from '@/components/PWAProvider';
 import LighthouseMonitor from '@/components/LighthouseMonitor';
 import LanguageProvider from '@/components/LanguageProvider';
+import FontLoader from '@/components/FontLoader';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Portfolio - Full Stack Engineer',
+  title: 'Portfolio - Senior Full Stack Engineer',
   description: 'Professional portfolio showcasing full-stack development projects and skills',
   keywords: ['portfolio', 'full stack', 'full stack developer', 'dot net', 'dotnet developer', '.net', 'dotnet', '.net core', 'c# developer', 'c#', '.net core developer', '.net developer', 'ASP.NET Developer', 'Oracle Developer', 'developer', 'react', 'next.js', 'typescript', 'web development', 'web design', 'web development services', 'web design services', 'web development company', 'web design company', 'web development agency', 'web design agency', 'web development services', 'web design services', 'web development company', 'web design company', 'web development agency', 'web design agency'],
   authors: [{ name: 'Muhammad Zaman' }],
@@ -26,8 +27,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mzamaann.dev',
-    title: 'Portfolio - Full Stack Engineer',
+    url: 'https://mzamaann.dev.github.io/portfolio',
+    title: 'Portfolio - Senior Full Stack Engineer',
     description: 'Professional portfolio showcasing full-stack development projects and skills',
     siteName: 'Portfolio',
   },
@@ -49,28 +50,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning className="font-sans">
-      <head>
-        <link
-          rel="preload"
-          href="/fonts/gumela-arabic-regular.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/gumela-arabic-bold.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
-      </head>
       <body className={inter.className}>
         <ErrorBoundary>
           <ThemeProvider>
             <LanguageProvider>
+              <FontLoader />
               <PWAProvider />
-              <LighthouseMonitor />
               <a href="#main-content" className="skip-link">
                 Skip to main content
               </a>
