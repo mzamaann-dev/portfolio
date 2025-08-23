@@ -57,39 +57,12 @@ export default function Experience() {
     },
   };
 
-  // Parse date string to Date object
-  const parseDate = (dateString: string): Date => {
-    // Handle various date formats
-    const date = new Date(dateString);
-    if (!isNaN(date.getTime())) {
-      return date;
-    }
-    
-    // Handle "Month Year" format (e.g., "January 2024")
-    const monthYearMatch = dateString.match(/(\w+)\s+(\d{4})/);
-    if (monthYearMatch) {
-      const month = monthYearMatch[1];
-      const year = parseInt(monthYearMatch[2]);
-      const monthIndex = new Date(`${month} 1, ${year}`).getMonth();
-      return new Date(year, monthIndex, 1);
-    }
-    
-    // Fallback to current date if parsing fails
-    return new Date();
-  };
-
-  // Sort experience by date
   const sortedExperience = useMemo(() => {
-    const experience = profileData.experience.map(exp => ({
-      ...exp,
-      parsedDate: parseDate(exp.duration as string)
-    }));
-    
-    return experience.sort((a, b) => {
+    return [...profileData.experience].sort((a, b) => {
       if (sortOrder === 'asc') {
-        return a.parsedDate.getTime() - b.parsedDate.getTime();
+        return b.id - a.id;
       } else {
-        return b.parsedDate.getTime() - a.parsedDate.getTime();
+        return a.id - b.id;
       }
     });
   }, [sortOrder, profileData.experience]);
